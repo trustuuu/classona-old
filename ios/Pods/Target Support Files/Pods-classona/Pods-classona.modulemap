@@ -1,0 +1,6 @@
+module Pods_classona {
+  umbrella header "Pods-classona-umbrella.h"
+
+  export *
+  module * { export * }
+}

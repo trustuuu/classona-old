@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/yschang/workspace/classona/node_modules/react-native/Libraries/TypeSafety/RCTConvertHelpers.mm \
+  /Users/yschang/workspace/classona/ios/Pods/Target\ Support\ Files/RCTTypeSafety/RCTTypeSafety-prefix.pch \
+  /Users/yschang/workspace/classona/node_modules/react-native/Libraries/TypeSafety/RCTConvertHelpers.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyVector.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyIterator.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/Optional.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/Portability.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/portability/Config.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/CPortability.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/Traits.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/Utility.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/lang/Exception.h \
+  /Users/yschang/workspace/classona/ios/Pods/Folly/folly/CppAttributes.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTConvert.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTAnimationType.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTBorderStyle.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTDefines.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTPackagerConnection.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTLog.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTAssert.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTUtils.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTPointerEvents.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/React-Core/React/RCTTextDecorationLineType.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/Yoga/yoga/Yoga.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/Yoga/yoga/YGEnums.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/Yoga/yoga/YGMacros.h \
+  /Users/yschang/workspace/classona/ios/Pods/Headers/Public/Yoga/yoga/YGValue.h

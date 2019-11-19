@@ -1,0 +1,99 @@
+export const EMAIL_CHANGED = 'email_changed';
+export const PASSWORD_CHANGED = 'password_changed';
+export const PASSWORD_CONFIRM_CHANGED = 'password_confirm_changed';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';
+export const LOGIN_USER_CHECK_FAIL = 'login_user_check_fail';
+export const LOGIN_USER = 'login_user';
+export const GET_ALL_MY_TILES = 'GET_ALL_MY_TILES';
+
+export const SIGNOUT_USER_SUCCESS = 'signout_user_success';
+export const SIGNOUT_USER_FAIL = 'signout_user_fail';
+
+export const SIGNUP_USER_SUCCESS = 'signup_user_success';
+export const SIGNUP_USER_FAIL = 'signup_user_fail';
+export const SIGNUP_USER = 'signup_user';
+export const SETUP_USER = 'SETUP_USER';
+export const DISPLAY_NAME_CHANGED = 'DISPLAY_NAME_CHANGED';
+
+export const ROOM_UPDATE = 'room_update';
+
+export const CLASS_ALL_FETCH = 'class_all_fetch';
+export const CALL_ALL_FETCH_SUCCESS = 'class_all_fetch_success';
+export const REMOVE_CLASS = 'remove_class';
+export const SELECTED_CLASS = 'SELECTED_CLASS';
+export const ADD_MY_CLASS_BOOKMARK = 'ADD_MY_CLASS_BOOKMARK';
+export const GET_MY_CLASS_BOOKMARKS = 'GET_MY_CLASS_BOOKMARKS';
+export const REMOVE_MY_CLASS_BOOKMARK = 'REMOVE_MY_CLASS_BOOKMARK';
+export const CLASS_ERROR = 'CLASS_ERROR';
+export const CLASS_DOING = 'CLASS_DOING';
+export const CHANGE_SCRIPTS = 'CHANGE_SCRIPTS';
+export const UPDATE_SCRIPTS = 'UPDATE_SCRIPTS';
+export const REMOVE_MY_CLASS_NOTE = 'REMOVE_MY_CLASS_NOTE';
+export const GET_MY_CLASS_NOTES = 'GET_MY_CLASS_NOTES';
+export const NOTE_TEXT_CHANGE = 'NOTE_TEXT_CHANGE';
+export const UPDATE_CLASS_NOTE = 'UPDATE_CLASS_NOTE';
+export const ADD_MY_CLASS_NOTE = 'ADD_MY_CLASS_NOTE';
+
+export const UPDATE_LIBRARY = 'UPDATE_LIBRARY';
+export const LIBRARY_STATUS = 'LIBRARY_STATUS';
+export const TRACK_PLAY_LOADING = 'TRACK_PLAY_LOADING';
+
+export const PLAYBACK_INIT = 'PLAYBACK_INIT';
+export const PLAYBACK_STATE = 'PLAYBACK_STATE';
+export const PLAYBACK_TRACK = 'PLAYBACK_TRACK';
+
+export const NAVIGATE_TO = 'NAVIGATE_TO';
+export const UPDATE_POSITION = 'UPDATE_POSITION';
+export const BLOCK_START_POSITION = 'BLOCK_START_POSITION';
+export const BLOCK_END_POSITION = 'BLOCK_END_POSITION';
+
+export const MOVE_MENU = 'MOVE_MENU';
+
+export const MY_WORD = 'MY_WORD';
+export const MY_DICTIONARY = 'MY_DICTIONARY';
+export const WORD_CHANGE = 'WORD_CHANGE';
+export const DESCRIPTION_CHANGE = 'DESCRIPTION_CHANGE';
+export const ADD_WORD_TO_DICTIONARY = 'ADD_WORD_TO_DICTIONARY';
+export const GET_ALL_MY_PHRASES = 'GET_ALL_MY_PHRASES';
+export const DELETE_MY_PHRASES = 'DELETE_MY_PHRASES';
+export const EDIT_MY_PHRASES = 'EDIT_MY_PHRASES';
+export const CHANGE_MY_PHRASES_BOOKMARK = 'CHANGE_MY_PHRASES_BOOKMARK';
+export const SUCCESS_MY_PHRASES = 'SUCCESS_MY_PHRASES';
+export const GET_BOOKMARK_MY_PHRASES = 'GET_BOOKMARK_MY_PHRASES';
+
+export const ADD_NEW_RECORD = 'ADD_NEW_RECORD';
+export const ADD_NEW_FILE = 'ADD_NEW_FILE';
+export const DELETE_RECORD = 'DELETE_RECORD';
+export const UPDATE_DURATION = 'UPDATE_DURATION';
+export const DELETE_ALL_RECORD = 'DELETE_ALL_RECORD';
+export const UPLOAD_FILE = 'UPLOAD_FILE';
+export const FINISH_UPLOAD = 'FINISH_UPLOAD';
+export const UPLOAD_STATE = 'UPLOAD_STATE';
+export const UPLOAD_PROGRESS = 'UPLOAD_PROGRESS';
+export const ERROR = 'ERROR';
+
+export const MY_DICTIONARY_SETTING_SUCCESS = 'MY_DICTIONARY_SETTING_SUCCESS';
+export const GET_ALL_MY_DICTIONARY_SETTING = 'GET_ALL_MY_DICTIONARY_SETTING';
+export const MY_DICTIONARY_VOICE_CHANGE = 'MY_DICTIONARY_VOICE_CHANGE';
+export const MY_DICTIONARY_LANGUAGE_CHANGE = 'MY_DICTIONARY_LANGUAGE_CHANGE';
+export const MY_DICTIONARY_FIRST_LANGUAGE_CHANGE = 'MY_DICTIONARY_FIRST_LANGUAGE_CHANGE';
+export const MY_DICTIONARY_FIRST_VOICE_CHANGE = 'MY_DICTIONARY_FIRST_VOICE_CHANGE';
+
+export const TEXT_CHANGE = 'TEXT_CHANGE';
+
+export const PROFILE_FETCH = 'PROFILE_FETCH';
+export const PROFILE_UPDATE = 'PROFILE_UPDATE';
+export const PROFILE_DOING = 'PROFILE_DOING';
+export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
+export const PROFILE_ERROR = 'PROFILE_ERROR';
+export const PROFILE_TEXT_CHANGE = 'PROFILE_TEXT_CHANGE';
+
+export const LANGUAGE_FETCH = 'LANGUAGE_FETCH';
+export const LANGUAGE_MY_FETCH = 'LANGUAGE_MY_FETCH';
+export const LANGUAGE_UPDATE = 'LANGUAGE_UPDATE';
+export const LANGUAGE_DELETE = 'LANGUAGE_DELETE';
+export const LANGUAGE_DOING = 'LANGUAGE_DOING';
+export const LANGUAGE_SUCCESS = 'LANGUAGE_SUCCESS';
+export const LANGUAGE_ERROR = 'LANGUAGE_ERROR';
+export const LANGUAGE_ADD = 'LANGUAGE_ADD';

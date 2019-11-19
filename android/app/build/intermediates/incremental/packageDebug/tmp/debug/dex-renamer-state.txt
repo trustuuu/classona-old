@@ -1,0 +1,4 @@
+#Sun Nov 17 02:09:28 PST 2019
+base.0=/Users/yschang/workspace/classona/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+path.0=classes.dex

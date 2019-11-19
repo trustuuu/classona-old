@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>2A47C33F-D133-4109-9E5C-73B89DB15A44</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2A47C33F-D133-4109-9E5C-73B89DB15A44.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>classona project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>classona</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>595676710.53486097</real>
+			<key>timeStoppedRecording</key>
+			<real>595676845.37476504</real>
+			<key>title</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>2A47C33F-D133-4109-9E5C-73B89DB15A44</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
