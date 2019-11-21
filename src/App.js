@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import firebase from '@firebase/app';
-require('firebase/firestore');
+import * as firebase from 'firebase';
+import 'firebase/firestore';
 
 import RouterComponent from './RouterComponent';
 import store from './Store';
@@ -11,7 +11,6 @@ import {AppState} from 'react-native';
 import {updatePlayback} from './actions';
 
 class App extends Component {
-  //static store = null;
 
   componentWillMount() {
     const config = {
@@ -22,7 +21,11 @@ class App extends Component {
       storageBucket: 'simplylearning-a27c2.appspot.com',
       messagingSenderId: '541110045029',
     };
-    firebase.initializeApp(config);
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+    }
+    
     // Initialize Cloud Firestore through Firebase
     var db = firebase.firestore();
 

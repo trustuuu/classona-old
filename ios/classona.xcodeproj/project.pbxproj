@@ -16,11 +16,12 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* classonaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* classonaTests.m */; };
-		4A1CCCAB238152CF006674DC /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1CCCAA238152CF006674DC /* dummy.swift */; };
-		90EB628918F979BA14DC4868 /* libPods-classona-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C74C1359104A1AF3D90A0C2C /* libPods-classona-tvOSTests.a */; };
-		98519D7C049C6AF21AC4C17A /* libPods-classona.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D5F5A80D67DCD2DCB9413 /* libPods-classona.a */; };
-		C68D5C84CEBC53F4BBDE3DDD /* libPods-classona-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD1861CD15AA1023B0292E /* libPods-classona-tvOS.a */; };
-		F5722D8FF0B0DC3FBA313A60 /* libPods-classonaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1888FFD1CFF0FBE8D415D0B /* libPods-classonaTests.a */; };
+		4704D6DA76EA08A0E76C3B3B /* libPods-classona-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310CF95A23D2C471EB330D9 /* libPods-classona-tvOSTests.a */; };
+		4AB9B26423868A1600A32C82 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB9B26323868A1600A32C82 /* dummy.swift */; };
+		4AB9B26623868AD200A32C82 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB9B26523868AD200A32C82 /* StoreKit.framework */; };
+		5453D0F19AB67534BBCE242D /* libPods-classona-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBC90B08984325E91813090 /* libPods-classona-tvOS.a */; };
+		836160DB8E9B29E1D4F815D1 /* libPods-classona.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B230BB6C62099E20EB5DE59C /* libPods-classona.a */; };
+		9B7E6FB3224B97CD43D8BA38 /* libPods-classonaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A61C393AE55BFF1A9A737F69 /* libPods-classonaTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		00E356EE1AD99517003FC87E /* classonaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = classonaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* classonaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = classonaTests.m; sourceTree = "<group>"; };
+		0D096ECD472554AC7EC41ED4 /* Pods-classonaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classonaTests.release.xcconfig"; path = "Target Support Files/Pods-classonaTests/Pods-classonaTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* classona.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classona.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = classona/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = classona/AppDelegate.m; sourceTree = "<group>"; };
@@ -52,24 +54,24 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = classona/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = classona/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = classona/main.m; sourceTree = "<group>"; };
-		18AD1861CD15AA1023B0292E /* libPods-classona-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CE5E540E52EE94F431008D4 /* Pods-classona-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOS.release.xcconfig"; path = "Target Support Files/Pods-classona-tvOS/Pods-classona-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* classona-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "classona-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* classona-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "classona-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		33630258CAC374EC54DBD0D6 /* Pods-classona-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOS.release.xcconfig"; path = "Target Support Files/Pods-classona-tvOS/Pods-classona-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		4022253DD6CEA2E7A21EFD5A /* Pods-classonaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classonaTests.release.xcconfig"; path = "Target Support Files/Pods-classonaTests/Pods-classonaTests.release.xcconfig"; sourceTree = "<group>"; };
-		4A1CCCA9238152CF006674DC /* classona-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "classona-Bridging-Header.h"; sourceTree = "<group>"; };
-		4A1CCCAA238152CF006674DC /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
-		5813A2BBE741DEF226F573BA /* Pods-classona-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-classona-tvOSTests/Pods-classona-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		622915634A8FA7CBA32EAF7B /* Pods-classona.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona.release.xcconfig"; path = "Target Support Files/Pods-classona/Pods-classona.release.xcconfig"; sourceTree = "<group>"; };
-		7389C3294BB669D50D0A88D1 /* Pods-classonaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classonaTests.debug.xcconfig"; path = "Target Support Files/Pods-classonaTests/Pods-classonaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		90ECCE9BB06E7CB1FA290496 /* Pods-classona.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona.debug.xcconfig"; path = "Target Support Files/Pods-classona/Pods-classona.debug.xcconfig"; sourceTree = "<group>"; };
-		947BD70C399992E2C145775C /* Pods-classona-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-classona-tvOS/Pods-classona-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		B87D5F5A80D67DCD2DCB9413 /* libPods-classona.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C74C1359104A1AF3D90A0C2C /* libPods-classona-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AB9B26223868A1600A32C82 /* classona-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "classona-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AB9B26323868A1600A32C82 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
+		4AB9B26523868AD200A32C82 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		525FCA1AAA8D97F2E49BCB51 /* Pods-classonaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classonaTests.debug.xcconfig"; path = "Target Support Files/Pods-classonaTests/Pods-classonaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		53093454B5AAA54EDDD06606 /* Pods-classona-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-classona-tvOS/Pods-classona-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6310CF95A23D2C471EB330D9 /* libPods-classona-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C08EA66A4EA433A952DB982 /* Pods-classona.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona.release.xcconfig"; path = "Target Support Files/Pods-classona/Pods-classona.release.xcconfig"; sourceTree = "<group>"; };
+		6DBC90B08984325E91813090 /* libPods-classona-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BD0F968117791D27D2D4322 /* Pods-classona.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona.debug.xcconfig"; path = "Target Support Files/Pods-classona/Pods-classona.debug.xcconfig"; sourceTree = "<group>"; };
+		A61C393AE55BFF1A9A737F69 /* libPods-classonaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classonaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B230BB6C62099E20EB5DE59C /* libPods-classona.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classona.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5E2BFEAC4A96413CC1B0C2D /* Pods-classona-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-classona-tvOSTests/Pods-classona-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD8A3777F8654CF9576B9840 /* Pods-classona-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-classona-tvOSTests/Pods-classona-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F1888FFD1CFF0FBE8D415D0B /* libPods-classonaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classonaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F693F339D8772F91010B1248 /* Pods-classona-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classona-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-classona-tvOSTests/Pods-classona-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5722D8FF0B0DC3FBA313A60 /* libPods-classonaTests.a in Frameworks */,
+				9B7E6FB3224B97CD43D8BA38 /* libPods-classonaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98519D7C049C6AF21AC4C17A /* libPods-classona.a in Frameworks */,
+				836160DB8E9B29E1D4F815D1 /* libPods-classona.a in Frameworks */,
+				4AB9B26623868AD200A32C82 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C68D5C84CEBC53F4BBDE3DDD /* libPods-classona-tvOS.a in Frameworks */,
+				5453D0F19AB67534BBCE242D /* libPods-classona-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EB628918F979BA14DC4868 /* libPods-classona-tvOSTests.a in Frameworks */,
+				4704D6DA76EA08A0E76C3B3B /* libPods-classona-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,27 +145,28 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AB9B26523868AD200A32C82 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				B87D5F5A80D67DCD2DCB9413 /* libPods-classona.a */,
-				18AD1861CD15AA1023B0292E /* libPods-classona-tvOS.a */,
-				C74C1359104A1AF3D90A0C2C /* libPods-classona-tvOSTests.a */,
-				F1888FFD1CFF0FBE8D415D0B /* libPods-classonaTests.a */,
+				B230BB6C62099E20EB5DE59C /* libPods-classona.a */,
+				6DBC90B08984325E91813090 /* libPods-classona-tvOS.a */,
+				6310CF95A23D2C471EB330D9 /* libPods-classona-tvOSTests.a */,
+				A61C393AE55BFF1A9A737F69 /* libPods-classonaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5D44D82F93D5134B8CB6F848 /* Pods */ = {
+		4B9610BD6E1C6141F0F1BBAF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				90ECCE9BB06E7CB1FA290496 /* Pods-classona.debug.xcconfig */,
-				622915634A8FA7CBA32EAF7B /* Pods-classona.release.xcconfig */,
-				947BD70C399992E2C145775C /* Pods-classona-tvOS.debug.xcconfig */,
-				33630258CAC374EC54DBD0D6 /* Pods-classona-tvOS.release.xcconfig */,
-				5813A2BBE741DEF226F573BA /* Pods-classona-tvOSTests.debug.xcconfig */,
-				F693F339D8772F91010B1248 /* Pods-classona-tvOSTests.release.xcconfig */,
-				7389C3294BB669D50D0A88D1 /* Pods-classonaTests.debug.xcconfig */,
-				4022253DD6CEA2E7A21EFD5A /* Pods-classonaTests.release.xcconfig */,
+				9BD0F968117791D27D2D4322 /* Pods-classona.debug.xcconfig */,
+				6C08EA66A4EA433A952DB982 /* Pods-classona.release.xcconfig */,
+				53093454B5AAA54EDDD06606 /* Pods-classona-tvOS.debug.xcconfig */,
+				2CE5E540E52EE94F431008D4 /* Pods-classona-tvOS.release.xcconfig */,
+				DD8A3777F8654CF9576B9840 /* Pods-classona-tvOSTests.debug.xcconfig */,
+				B5E2BFEAC4A96413CC1B0C2D /* Pods-classona-tvOSTests.release.xcconfig */,
+				525FCA1AAA8D97F2E49BCB51 /* Pods-classonaTests.debug.xcconfig */,
+				0D096ECD472554AC7EC41ED4 /* Pods-classonaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,14 +181,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				4A1CCCAA238152CF006674DC /* dummy.swift */,
+				4AB9B26323868A1600A32C82 /* dummy.swift */,
 				13B07FAE1A68108700A75B9A /* classona */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* classonaTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				5D44D82F93D5134B8CB6F848 /* Pods */,
-				4A1CCCA9238152CF006674DC /* classona-Bridging-Header.h */,
+				4B9610BD6E1C6141F0F1BBAF /* Pods */,
+				4AB9B26223868A1600A32C82 /* classona-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -209,7 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "classonaTests" */;
 			buildPhases = (
-				8260FFAEA63F9EB9E0C6C48B /* [CP] Check Pods Manifest.lock */,
+				1A9B01BD1BE31F523F3EAC63 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -228,7 +232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "classona" */;
 			buildPhases = (
-				6CEF6755BE46C3E5CE4C4FFA /* [CP] Check Pods Manifest.lock */,
+				4382070DE0EC2E419A26CE3E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -248,7 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "classona-tvOS" */;
 			buildPhases = (
-				AFED6712DEA63FEA8012009B /* [CP] Check Pods Manifest.lock */,
+				B2D328E0B7D4A7EC85EDA254 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -268,7 +272,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "classona-tvOSTests" */;
 			buildPhases = (
-				F7C1DA9FE57D216A37828BC7 /* [CP] Check Pods Manifest.lock */,
+				00F3C76F8F2A2F8C2DCEED23 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -297,7 +301,16 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = R94P89TY88;
 						LastSwiftMigration = 1030;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -379,23 +392,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
-		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		6CEF6755BE46C3E5CE4C4FFA /* [CP] Check Pods Manifest.lock */ = {
+		00F3C76F8F2A2F8C2DCEED23 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,14 +409,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-classona-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-classona-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8260FFAEA63F9EB9E0C6C48B /* [CP] Check Pods Manifest.lock */ = {
+		1A9B01BD1BE31F523F3EAC63 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,7 +438,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AFED6712DEA63FEA8012009B /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		4382070DE0EC2E419A26CE3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-classona-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2D328E0B7D4A7EC85EDA254 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -455,28 +490,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-classona-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7C1DA9FE57D216A37828BC7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-classona-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -537,7 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				4A1CCCAB238152CF006674DC /* dummy.swift in Sources */,
+				4AB9B26423868A1600A32C82 /* dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,7 +602,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7389C3294BB669D50D0A88D1 /* Pods-classonaTests.debug.xcconfig */;
+			baseConfigurationReference = 525FCA1AAA8D97F2E49BCB51 /* Pods-classonaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -613,7 +626,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4022253DD6CEA2E7A21EFD5A /* Pods-classonaTests.release.xcconfig */;
+			baseConfigurationReference = 0D096ECD472554AC7EC41ED4 /* Pods-classonaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -634,13 +647,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90ECCE9BB06E7CB1FA290496 /* Pods-classona.debug.xcconfig */;
+			baseConfigurationReference = 9BD0F968117791D27D2D4322 /* Pods-classona.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				ENABLE_BITCODE = NO;
+				DEVELOPMENT_TEAM = R94P89TY88;
 				INFOPLIST_FILE = classona/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -648,7 +661,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.igoodworks.classona;
 				PRODUCT_NAME = classona;
 				SWIFT_OBJC_BRIDGING_HEADER = "classona-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -659,12 +672,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 622915634A8FA7CBA32EAF7B /* Pods-classona.release.xcconfig */;
+			baseConfigurationReference = 6C08EA66A4EA433A952DB982 /* Pods-classona.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_BITCODE = NO;
+				DEVELOPMENT_TEAM = R94P89TY88;
 				INFOPLIST_FILE = classona/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -672,7 +685,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.igoodworks.classona;
 				PRODUCT_NAME = classona;
 				SWIFT_OBJC_BRIDGING_HEADER = "classona-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -682,7 +695,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 947BD70C399992E2C145775C /* Pods-classona-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 53093454B5AAA54EDDD06606 /* Pods-classona-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -710,7 +723,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33630258CAC374EC54DBD0D6 /* Pods-classona-tvOS.release.xcconfig */;
+			baseConfigurationReference = 2CE5E540E52EE94F431008D4 /* Pods-classona-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -738,7 +751,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5813A2BBE741DEF226F573BA /* Pods-classona-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = DD8A3777F8654CF9576B9840 /* Pods-classona-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -765,7 +778,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F693F339D8772F91010B1248 /* Pods-classona-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = B5E2BFEAC4A96413CC1B0C2D /* Pods-classona-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -836,7 +849,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -882,7 +895,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -37,6 +37,6 @@ if (!global.atob) {
 }
 
 AppRegistry.registerComponent(appName, () => App());
-//createEventHandler(store);
+
 TrackPlayer.registerEventHandler(createEventHandler(store));
 

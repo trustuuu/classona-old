@@ -1,5 +1,5 @@
 import TrackPlayer from 'react-native-track-player';
-import firebase from '@firebase/app';
+import firebase from 'firebase';
 require("firebase/storage");
 import { UPDATE_LIBRARY, LIBRARY_STATUS, PLAYBACK_INIT, PLAYBACK_STATE, 
         PLAYBACK_TRACK, NAVIGATE_TO, UPDATE_POSITION, BLOCK_START_POSITION, BLOCK_END_POSITION,

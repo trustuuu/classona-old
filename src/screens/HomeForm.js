@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';;
-import {Card, CardSection, Input, Button, Spinner} from '../components/common';
+
 import {
   checkLoginUser,
   goTeacherScreen,
@@ -65,6 +65,8 @@ class HomeForm extends Component {
       '#f9ca24',
     ];
     const oStudentTiles = this.props.tiles.filter(t => t.type == 'student');
+
+    console.log('oStudentTiles =>', oStudentTiles, 'this.props.titles', this.props.titles);
     //initial form
     if (this.props.tiles.length == 0) {
       return (

@@ -1,5 +1,5 @@
-import firebase from '@firebase/app';
-import '@firebase/auth';
+import firebase from 'firebase';
+//import '@firebase/auth';
 import { Dimensions } from 'react-native';
 
 const iPhoneSize = () => {

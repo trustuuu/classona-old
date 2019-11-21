@@ -14,8 +14,22 @@ import java.util.ArrayList;
 import com.classona.BuildConfig;
 import com.classona.R;
 
+// react-native-audio-record
+import com.goodatlas.audiorecord.RNAudioRecordPackage;
+// react-native-background-timer
+import com.ocetnik.timer.BackgroundTimerPackage;
+// react-native-fs
+import com.rnfs.RNFSPackage;
+// react-native-iap
+import com.dooboolab.RNIap.RNIapPackage;
+// react-native-permissions
+import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
 // react-native-track-player
 import com.guichaguri.trackplayer.TrackPlayer;
+// react-native-tts
+import net.no_mad.tts.TextToSpeechPackage;
 
 public class PackageList {
   private Application application;
@@ -61,7 +75,14 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
-      new TrackPlayer()
+      new RNAudioRecordPackage(),
+      new BackgroundTimerPackage(),
+      new RNFSPackage(),
+      new RNIapPackage(),
+      new RNPermissionsPackage(),
+      new SvgPackage(),
+      new TrackPlayer(),
+      new TextToSpeechPackage()
     ));
   }
 }

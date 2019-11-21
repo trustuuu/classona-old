@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>2A47C33F-D133-4109-9E5C-73B89DB15A44</key>
+		<key>5122C732-F48B-4373-8DB7-ABFAAEB123A5</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,11 +15,11 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>2A47C33F-D133-4109-9E5C-73B89DB15A44.xcactivitylog</string>
+			<string>5122C732-F48B-4373-8DB7-ABFAAEB123A5.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>W</string>
+				<string>S</string>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>classona project</string>
@@ -30,13 +30,13 @@
 			<key>signature</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>595676710.53486097</real>
+			<real>596019392.224738</real>
 			<key>timeStoppedRecording</key>
-			<real>595676845.37476504</real>
+			<real>596019393.45455801</real>
 			<key>title</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>2A47C33F-D133-4109-9E5C-73B89DB15A44</string>
+			<string>5122C732-F48B-4373-8DB7-ABFAAEB123A5</string>
 		</dict>
 	</dict>
 </dict>

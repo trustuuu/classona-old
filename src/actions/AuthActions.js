@@ -1,6 +1,5 @@
-import firebase from '@firebase/app';
-require("firebase/firestore");
-//import '@firebase/auth';
+import firebase from 'firebase';
+
 import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER,
         SIGNOUT_USER_FAIL, SIGNOUT_USER_SUCCESS, LOGIN_USER_CHECK_FAIL, GET_ALL_MY_TILES } from './types';
 import { Actions } from 'react-native-router-flux';
@@ -35,8 +34,10 @@ export const checkLoginUser = () => {
     return (dispatch) => {
         firebase.auth().onAuthStateChanged( (user ) => {
             if (user) {
+                console.log('loginUser user => ', user);
                 loginUserSuccess(dispatch, user)
             }else{
+                console.log('loginUser failed');
                 checkUserLoginFail(dispatch)
             }
         });
@@ -47,6 +48,7 @@ export const getLoginTiles = () => {
     return (dispatch) => {
         firebase.auth().onAuthStateChanged( (user ) => {
             if (user) {
+                console.log('getLoginTiles', user);
                 
                 const db = firebase.firestore();
                 let tiles = [];
@@ -131,9 +133,9 @@ export const loginUser = ( {email, password} ) => {
     return (dispatch) => {
 
         dispatch({type: LOGIN_USER});
-        
+        console.log('loginUser with', email, password);
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(user => loginUserSuccess(dispatch, user))
+        .then(user => {console.log('loginUser user => ', user); loginUserSuccess(dispatch, user)})
         .catch((error) => {
             console.log(error);
             //firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -165,10 +167,11 @@ const loginUserFail = (dispatch) => {
 }
 
 const loginUserSuccess = (dispatch, user) => {
-    
+    console.log('user', user);
     dispatch ({
         type: LOGIN_USER_SUCCESS,
         payload: user
     })
+
     Actions.mainContainer();
 }

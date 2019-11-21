@@ -111,5 +111,5 @@ watchman watch-del-all
         "/Users/yschang/workspace/sample"
     ]
 }
-➜  classona react-native start --reset-cache
+➜  react-native start --reset-cache
 ```
