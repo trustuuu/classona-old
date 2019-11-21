@@ -9,7 +9,7 @@ import MyPlanHistoryItem from './MyPlanHistoryItem';
 import MyPlanList from './MyPlanList';
 import colors from '../../styles/colors';
 
-class MySettings extends Component {
+class MyPlanHistory extends Component {
 
     constructor(props){
         super(props);
@@ -18,7 +18,11 @@ class MySettings extends Component {
 
     async componentDidMount() {
         try {
-            await RNIap.prepare();
+            const result = await RNIap.initConnection();
+            
+            console.log('RNIAP', result);
+
+            //await RNIap.prepare();
             
             await this.getProducts();
             await this.getAvailablePurchases();
@@ -36,27 +40,14 @@ class MySettings extends Component {
     //https://github.com/dooboolab/react-native-iap/issues/275
     getAvailablePurchases = async() => {
         try {
-          //const purchases = await RNIap.getAvailablePurchases();
           const availablePurchases = await RNIap.getAvailablePurchases();
           const purchases = availablePurchases.map( item => {
-            return {...item, product: this.state.products.find( p => p.productId == 'com.igoodworks.classona.monthly1') } //item.productId) }
+            return {...item, product: this.state.products.find( p => p.productId == 'com.igoodworks.classona.monthly1') } 
             }
           )
 
           let temp = '';
           if (purchases && purchases.length > 0) {
-
-            // purchases.forEach(purchase => {
-            //     const testReceipt = RNIap.validateReceiptIos(purchase.transactionReceipt, true);
-                
-            //     temp = `${temp} : ${purchase.productId} :
-            //             ${purchase.transactionDate} : 
-            //             ${convertSecToDateForReceipt(purchase.transactionDate).toLocaleString()} : 
-            //             ${purchase.dataAndroid} :
-            //             ${purchase.autoRenewingAndroid}: 
-            //              end`;
-            //   })
-
             this.setState({
                 availablePurchases: purchases
             });
@@ -133,7 +124,7 @@ class MySettings extends Component {
     }
 }
 
-export default MySettings;
+export default MyPlanHistory;
 
 const styles = StyleSheet.create({
     wapper: {

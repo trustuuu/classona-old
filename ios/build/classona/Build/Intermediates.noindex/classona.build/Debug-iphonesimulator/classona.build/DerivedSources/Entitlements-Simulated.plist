@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>R94P89TY88.org.reactjs.native.example.classona</string>
+	<string>R94P89TY88.com.igoodworks.classona</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>R94P89TY88.org.reactjs.native.example.classona</string>
+		<string>R94P89TY88.com.igoodworks.classona</string>
 	</array>
 </dict>
 </plist>

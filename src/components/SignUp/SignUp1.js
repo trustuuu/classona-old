@@ -61,6 +61,15 @@ class SignUp1 extends Component {
     render() {
         return (
             <ScrollView style={styles.wrapper}>
+                <TouchableOpacity 
+                        style={{flexDirection: 'row', justifyContent: 'center', width:400, height:40, borderRadius:20}} 
+                        onPress={() => Actions.pop()}>
+                        <Image
+                            source={require('../../img/left-arrow.png')}
+                            style={{width:30, height:30}}
+                        />
+                        <Text style={{textAlign: 'center', width:300, fontSize:20}}>Account</Text>
+                </TouchableOpacity>
                 <Image
                     source={classonaLetterLogo}
                     style={styles.logo}

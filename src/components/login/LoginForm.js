@@ -28,6 +28,10 @@ class LoginForm extends Component{
         this.props.loginUser({ email, password });
     }
 
+    onSignUpPress(){
+        Actions.signUp1();
+    }
+
     renderButton() {
         if (this.props.loading){
             return <Spinner size="large" />;
@@ -88,7 +92,7 @@ class LoginForm extends Component{
                         {this.renderButton()}
                         <TouchableOpacity 
                             style={[{borderWidth: 0, paddingLeft: 20,flexDirection: 'column', justifyContent: 'center'}]} 
-                            onPress={ Actions.register }>
+                            onPress={ this.onSignUpPress.bind(this) }>
                             <Image style={styles.button} source={require('../../img/signup.png')}></Image>
                             <Text style={{textAlign: 'center'}}>Sign Up</Text>
                         </TouchableOpacity>

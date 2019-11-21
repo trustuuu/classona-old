@@ -4,7 +4,11 @@ import { Router, Scene, Actions, Drawer } from 'react-native-router-flux';
 import HomeTest from './screens/HomeTest';
 import HomeForm from './screens/HomeForm';
 import LoginForm from './components/login/LoginForm';
-import SignUpForm from './components/login/SignUpForm';
+
+import SignUp1 from './components/SignUp/SignUp1';
+import SignUp2 from './components/SignUp/SignUp2';
+import SignUp3 from './components/SignUp/SignUp3';
+
 import SignOutForm from './components//login/SignOutForm';
 
 import ClassList from './components/MyClass/ClassList';
@@ -35,8 +39,10 @@ const RouterComponent = () => {
             <Scene key="root" hideNavBar>
                 <Scene key="auth">
                     <Scene key="home" hideNavBar component={HomeForm} title="Home"  initial/>
-                    <Scene key="login" component={LoginForm} title="Please Login" />
-                    <Scene key="signup" component={SignUpForm} title="Sign Up"  />
+                    <Scene key="login" hideNavBar component={LoginForm} title="Please Login" />
+                    <Scene key="signUp1" hideNavBar component={SignUp1} title="Sign Up"  />
+                    <Scene key="signUp2" hideNavBar component={SignUp2} title="Sign Up"  />
+                    <Scene key="signUp3" hideNavBar component={SignUp3} title="Sign Up"  />
                 </Scene>
 
                 <Scene key="mainContainer">
@@ -91,6 +97,8 @@ const RouterComponent = () => {
                     <Scene key="ClassNoteList" title='Class Information' component={ClassNoteList}/>
                     <Scene key="ClassNoteEdit" title='Class Note' component={ClassNoteEdit}/>
 
+                    <Scene key="myPlanHistory" component={MyPlanHistory} title='My Plan'/>
+                    <Scene key="myPlanList"  component={MyPlanList} title='New Plan' />
                     <Scene key="ClassRecorder" title="Private Class" component={ClassRecorder}
                     />
                 </Scene>
@@ -109,8 +117,6 @@ const RouterComponent = () => {
                 <Scene key="myPhraseEdit" direction="vertical" component={MyPhraseEdit} title='My Phrase' />
                 <Scene key="myPhrasePlay" direction="vertical" component={MyPhrasePlay} title='My Phrase' />
                 <Scene key="MediaList" direction="vertical" component={MediaList} title='Track List' />
-                <Scene key="myPlanHistory" direction="vertical" component={MyPlanHistory} title='My Plan' />
-                <Scene key="myPlanList" direction="vertical" component={MyPlanList} title='Plan' />
                 
                 {/* <Scene key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmark List' /> */}
                 

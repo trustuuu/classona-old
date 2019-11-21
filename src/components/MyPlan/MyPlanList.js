@@ -9,7 +9,7 @@ import MyPlanListItem from './MyPlanListItem';
 
 import colors from '../../styles/colors';
 
-class MySettings extends Component {
+class MyPlanList extends Component {
 
     constructor(props){
         super(props);
@@ -27,7 +27,9 @@ class MySettings extends Component {
         });
 
         try {
-            await RNIap.prepare();
+            //await RNIap.prepare();
+            const result = await RNIap.initConnection();
+            console.log('result in plan list', result);
             //const products = await RNIap.getProducts(itemSkus);
             const products = await RNIap.getSubscriptions(itemSkus);
             // this.setState({ products : products.map(p => ({...p, label: `${p.title}(${p.currency}${p.price})`, value: p.productId}))
@@ -162,7 +164,7 @@ class MySettings extends Component {
     }
 }
 
-export default MySettings;
+export default MyPlanList;
 
 const styles = StyleSheet.create({
     wapper: {

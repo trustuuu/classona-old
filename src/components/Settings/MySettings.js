@@ -25,7 +25,7 @@ class MySettings extends Component {
         });
 
         try {
-            await RNIap.prepare();
+            //await RNIap.prepare();
             const products = await RNIap.getProducts(itemSkus);
             this.setState({ products : products.map(p => ({...p, label: `${p.title}(${p.currency}${p.price})`, value: p.productId}))
                           });

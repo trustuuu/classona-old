@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>5122C732-F48B-4373-8DB7-ABFAAEB123A5</key>
+		<key>061878DF-2D7D-4FFB-A72B-B42561BCB567</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,11 +15,11 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>5122C732-F48B-4373-8DB7-ABFAAEB123A5.xcactivitylog</string>
+			<string>061878DF-2D7D-4FFB-A72B-B42561BCB567.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>W</string>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>classona project</string>
@@ -30,13 +30,45 @@
 			<key>signature</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>596019392.224738</real>
+			<real>596058417.66830099</real>
 			<key>timeStoppedRecording</key>
-			<real>596019393.45455801</real>
+			<real>596058419.22532499</real>
 			<key>title</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>5122C732-F48B-4373-8DB7-ABFAAEB123A5</string>
+			<string>061878DF-2D7D-4FFB-A72B-B42561BCB567</string>
+		</dict>
+		<key>A3015F5A-C14F-4986-9FE6-050E8CD9CE5E</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A3015F5A-C14F-4986-9FE6-050E8CD9CE5E.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>classona project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>classona</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>596059756.95308101</real>
+			<key>timeStoppedRecording</key>
+			<real>596059758.53656006</real>
+			<key>title</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>A3015F5A-C14F-4986-9FE6-050E8CD9CE5E</string>
 		</dict>
 	</dict>
 </dict>
