@@ -51,9 +51,10 @@ export const getAllLanguages = () => {
 }
 
 export const getMyLanguages = () => {
-    const {currentUser} = firebase.auth();
+    //const {currentUser} = firebase.auth();
 
     return (dispatch) => {
+        
         const db = firebase.firestore();
         const getOptions = {
             source: 'server'
@@ -95,11 +96,13 @@ export const addMyLanguage = (language) => {
     }
 }
 
-export const deleteMyLanguage = (language) => {
+export const deleteMyLanguage = (languageKey) => {
     return(dispatch) => {
 
+        console.log('language delete', languageKey, accountPath());
+
         var db = firebase.firestore();
-        const languageKey = language.classMeta;
+        //const languageKey = language.classMeta;
         db.collection(`${accountPath()}/languages`).doc(languageKey).delete()
         .then(function() {
             console.log("language successfully deleted!");

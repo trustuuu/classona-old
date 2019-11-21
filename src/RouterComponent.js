@@ -26,8 +26,15 @@ import MyPhraseEdit from './components/MyPhrase/MyPhraseEdit';
 import MyPhrasePlay from './components/MyPhrase/MyPhrasePlay';
 import PhraseList from './components/MyPhrase/PhraseList';
 
+import ProfileSettings from './components/Settings/ProfileSettings';
+import ProfileSettingsEdit from './components/Settings/ProfileSettingsEdit';
+
+
 import MyPlanHistory from './components/MyPlan/MyPlanHistory';
 import MyPlanList from './components/MyPlan/MyPlanList';
+
+import MyLanguageList from './components/MyLanguage/MyLanguageList';
+
 import MyBookmarkList from './components/MyBookmark/MyBookmarkList';
 import ClassRecorder from './components/ClassRecorder';
 import LabSettings from './components/Settings/LabSettings';
@@ -99,8 +106,11 @@ const RouterComponent = () => {
 
                     <Scene key="myPlanHistory" component={MyPlanHistory} title='My Plan'/>
                     <Scene key="myPlanList"  component={MyPlanList} title='New Plan' />
-                    <Scene key="ClassRecorder" title="Private Class" component={ClassRecorder}
-                    />
+                    
+                    <Scene key="myLanguageList"  component={MyLanguageList} title='My Language' />
+
+
+                    <Scene key="ClassRecorder" title="Private Class" component={ClassRecorder}/>
                 </Scene>
 
                 <Scene key="ClassSort" modal direction="vertical" 
@@ -117,7 +127,10 @@ const RouterComponent = () => {
                 <Scene key="myPhraseEdit" direction="vertical" component={MyPhraseEdit} title='My Phrase' />
                 <Scene key="myPhrasePlay" direction="vertical" component={MyPhrasePlay} title='My Phrase' />
                 <Scene key="MediaList" direction="vertical" component={MediaList} title='Track List' />
-                
+
+                <Scene key="profileSettings" direction="vertical" component={ProfileSettings} title='My Profile' />
+                <Scene key="profileSettingsEdit" direction="vertical" component={ProfileSettingsEdit} title='My Profile Edit' />
+
                 {/* <Scene key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmark List' /> */}
                 
 
