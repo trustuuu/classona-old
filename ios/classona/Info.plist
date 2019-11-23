@@ -37,8 +37,26 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Classona need media library access to provide playing private class.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Classona need  bluethooth access to record or listen class.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Classona need  bluethooth access to record or listen class.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Classona need calendar access to schedule class</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Classona need location access to provide nearby institution.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Classona collect which location they have class. (future feature)</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Classona need microphone access to record their class and convert it to text.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Classona need motion recognaztion access to pause class play while user get distracted by something.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Classona need  photo library access to upload to Classona</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Classona need speech recognition access to play by speech. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

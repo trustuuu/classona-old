@@ -6,7 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Icon,
+  ImageBackground,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';;
@@ -24,6 +24,7 @@ import colors from '../styles/colors';
 
 //const classonaLetterLogo = {uri: 'http://www.igoodworks.com/images/logo.png'};
 const classonaLetterLogo = require('../img/classonaLetter.png');
+const homeBg = require('../img/homeBg.jpg');
 const homeImg = require('../img/click.png');
 const loadingImg = require('../img/loading.gif');
 const teacherImg = require('../img/teacher.png');
@@ -152,14 +153,32 @@ class HomeForm extends Component {
 
   render() {
     return (
-        <View style={styles.welcomeWrapper}>
-          <Image source={classonaLetterLogo} style={styles.logo} />
-          {this.makeTeacherButton()}
-          {this.makeCircleButton()}
-        </View>
+        // <View style={styles.welcomeWrapper}>
+        //   <ImageBackground source={homeBg}
+        //     style={{resizeMode: 'cover', width:'100%', height:'100%', alignItems: 'center', justifyContent: 'center'}}>
+        //       <Image source={classonaLetterLogo} style={styles.logo} />
+        //       {this.makeTeacherButton()}
+        //       {this.makeCircleButton()}
+        //   </ImageBackground>
+        // </View>
+
+        <ImageBackground
+        source={homeBg}
+        style={[styles.container, {resizeMode: 'cover', height:'100%'}]}>
+            <View style={styles.overlay}>
+            <Image source= {classonaLetterLogo}
+                style={styles.avatarStyle}/>
+        {this.makeTeacherButton()}
+        {this.makeCircleButton()}
+            </View>
+        </ImageBackground>
+
+
     );
   }
 }
+
+
 
 const mapStateToProps = ({auth}) => {
   const {user, tiles, loading} = auth;

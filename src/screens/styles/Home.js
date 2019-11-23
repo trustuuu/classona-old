@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:'#405CE5CC'
   },
    logo: {
     width: 200,
@@ -38,6 +39,32 @@ const styles = StyleSheet.create({
     height: 100,
     //marginTop: 300,
   },
+  container: {
+
+  },            
+  overlay: {
+      backgroundColor:'#405CE5CC',
+      height: '100%'
+  },
+  avatarStyle: {
+    resizeMode: 'cover',
+      // width:250, 
+      // height: 100,
+      marginTop: 100,
+      //borderRadius: 50,
+      alignSelf: 'center',
+  },
+  textStyle: {
+      marginTop: 10,
+      fontSize: 18,
+      color: "#FFFFFF",
+      fontWeight: 'bold',
+      alignSelf: 'center',
+  },
+  balanceContainer:{
+      padding:10,
+  }
 });
+
 
 export default styles;

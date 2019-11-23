@@ -316,7 +316,7 @@ class ClassPlayer extends Component {
                         disabled = {!this.props.trackLoaded}
                     />
                     <ImageButton
-                        source={((this.props.state == TrackPlayer.STATE_PAUSED) || (this.props.state == TrackPlayer.STATE_STOPPED) || (this.props.state == TrackPlayer.STATE_READY) || (this.props.state == '')|| (this.props.state == 1)) ? iconPlay : iconPause}
+                        source={((this.props.state == TrackPlayer.STATE_PAUSED) || (this.props.state == TrackPlayer.STATE_STOPPED) || (this.props.state == TrackPlayer.STATE_READY) || (this.props.state == 'idel') || (this.props.state == '')|| (this.props.state == 1)) ? iconPlay : iconPause}
                         onPress={this._playPause.bind(this)}
                         style={styles.playPause}
                         imageStyle={styles.controlIcon}
