@@ -39,12 +39,30 @@ const styles = StyleSheet.create({
     height: 100,
     //marginTop: 300,
   },
+  progressIndicator: {
+    marginLeft: 'auto',
+    marginRight: 10,
+  },
+  points: {
+    textAlign: 'center',
+    color: '#feca57',
+    fontSize: 25,
+    fontWeight: '100',
+  },
   container: {
 
   },            
   overlay: {
       backgroundColor:'#405CE5CC',
       height: '100%'
+  },
+  countryStyle: {
+    resizeMode: 'cover',
+      width:80, 
+      height: 80,
+      //marginTop: 100,
+      borderRadius: 50,
+      alignSelf: 'center',
   },
   avatarStyle: {
     resizeMode: 'cover',

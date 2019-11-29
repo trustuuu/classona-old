@@ -7,9 +7,11 @@ import {
   ScrollView,
   TouchableOpacity,
   ImageBackground,
+  Easing
 } from 'react-native';
 import {connect} from 'react-redux';
-import {Actions} from 'react-native-router-flux';;
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import countryImages from '../img/countryImg';
 
 import {
   checkLoginUser,
@@ -28,11 +30,28 @@ const homeBg = require('../img/homeBg.jpg');
 const homeImg = require('../img/click.png');
 const loadingImg = require('../img/loading.gif');
 const teacherImg = require('../img/teacher.png');
+const MAX_POINTS = 100;
 
 class HomeForm extends Component {
-  componentWillMount() {
+  // componentWillMount() {
+  //   this.props.getLoginTiles();
+  // }
+
+
+  componentDidMount(){
     this.props.getLoginTiles();
+    this.circularProgress.animate(100, 3000, Easing.linear);
+  
+    // this.intervalId = setInterval(
+    //   () => this.circularProgress.reAnimate(0,100, 3000,Easing.linear),
+    //   30000
+    // );
   }
+  
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
 
   makeTeacherButton = text => {
     let findIndex = this.props.tiles.findIndex(t => t.type == 'instructor');
@@ -55,7 +74,8 @@ class HomeForm extends Component {
     );;
   };
 
-  makeCircleButton = onPress => {
+
+  makeCircleButton = () => {
     let btnArrary = [];
     let btnColors = [
       '#f6e58d',
@@ -70,9 +90,30 @@ class HomeForm extends Component {
     console.log('oStudentTiles =>', oStudentTiles, 'this.props.titles', this.props.titles);
     //initial form
     if (this.props.tiles.length == 0) {
+      console.log('make progress circle');
       return (
         <TouchableOpacity onPress={() => this.props.getLoginTiles()}>
-          <Image source={homeImg} style={styles.homeImg} />
+          {/* <Image source={homeImg} style={styles.homeImg} /> */}
+          <AnimatedCircularProgress
+              size={100}
+              width={15}
+              fill={100}
+
+              //size={60}
+              style={styles.progressIndicator}
+              //width={1}
+              ref={(ref) => this.circularProgress = ref}
+              //fill={0}
+              tintColor="#00e0ff"
+              onAnimationComplete={() => console.log('onAnimationComplete')}
+              backgroundColor="#3d5875"
+            >
+            {
+              (fill) => (
+                <Text style={styles.points}>{Math.round((MAX_POINTS * fill) / 100)} %</Text>
+              )
+            }
+        </AnimatedCircularProgress>
         </TouchableOpacity>
       );;
     }
@@ -91,6 +132,7 @@ class HomeForm extends Component {
 
     oStudentTiles.forEach((item, index) => {
       btnArrary.push(
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <TouchableOpacity
           style={{
             borderWidth: 1,
@@ -123,8 +165,10 @@ class HomeForm extends Component {
 
                 key = {index}
                 >
-          <Text style={{color: 'black', fontSize: 50}}>{item.language}</Text>
-        </TouchableOpacity>,
+          <Image source={countryImages[item.language].img} style={styles.countryStyle}/>
+          </TouchableOpacity>
+          <Text style={{color: 'white', fontSize: 20}}>{countryImages[item.language].title}</Text>
+          </View>
       );
     });
 
@@ -166,10 +210,17 @@ class HomeForm extends Component {
         source={homeBg}
         style={[styles.container, {resizeMode: 'cover', height:'100%'}]}>
             <View style={styles.overlay}>
-            <Image source= {classonaLetterLogo}
-                style={styles.avatarStyle}/>
-        {this.makeTeacherButton()}
-        {this.makeCircleButton()}
+              <Image source= {classonaLetterLogo}
+                    style={styles.avatarStyle}/>
+              <View style={{flex: 1,
+                            display: 'flex',
+                            flexDirection: 'row',
+                            height: '100%',
+                            justifyContent: 'center',
+                            alignItems: 'center',}}>
+                {this.makeTeacherButton()}
+                {this.makeCircleButton()}
+              </View>
             </View>
         </ImageBackground>
 

@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>658B4CA3-AE1F-4F31-A75B-7F9F0F889C4E</key>
+		<key>74485CF6-5E3D-4B5B-8BDB-AD760DE1241B</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>658B4CA3-AE1F-4F31-A75B-7F9F0F889C4E.xcactivitylog</string>
+			<string>74485CF6-5E3D-4B5B-8BDB-AD760DE1241B.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,13 +30,45 @@
 			<key>signature</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>596066352.39196801</real>
+			<real>596718259.01939094</real>
 			<key>timeStoppedRecording</key>
-			<real>596066353.87449801</real>
+			<real>596718371.80659699</real>
 			<key>title</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>658B4CA3-AE1F-4F31-A75B-7F9F0F889C4E</string>
+			<string>74485CF6-5E3D-4B5B-8BDB-AD760DE1241B</string>
+		</dict>
+		<key>BC3A96FC-7659-4063-9168-E636829A06EE</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BC3A96FC-7659-4063-9168-E636829A06EE.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>classona project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>classona</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>596718430.72389495</real>
+			<key>timeStoppedRecording</key>
+			<real>596718433.54912198</real>
+			<key>title</key>
+			<string>Building workspace classona with scheme classona and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>BC3A96FC-7659-4063-9168-E636829A06EE</string>
 		</dict>
 	</dict>
 </dict>
