@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { ListView, Text, Button, ScrollView, View, TouchableHighlight } from 'react-native';
-import {CardSection, Card} from './common';
+import {CardSection, Card} from '../common';
 //import { MediaItem } from './MediaItem';
 import { Actions, ActionConst } from 'react-native-router-flux';
-import colors from '../styles/colors';
-import global from '../helpers/global.js';
-import { deleteRecord, uploadMyPrivateClass  } from '../actions';
+import colors from '../../styles/colors';
+import global from '../../helpers/global.js';
+import { deleteRecord, uploadMyPrivateClass  } from '../../actions';
 
 import Swipeout from 'react-native-swipeout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';

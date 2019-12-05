@@ -1267,7 +1267,7 @@ Array.prototype.groupBy = function(filter) {
     let group = {};
 
     //const val = item[prop]
-    //console.log('ini groups',groups, groups.length);
+    console.log('ini groups',groups, filter, item);
     if (groups.length == 0) {
         //let temp = {};
         filter.forEach(prop => {

@@ -3,9 +3,9 @@ import { Platform, View, Dimensions, Text } from 'react-native';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { decode } from 'base-64';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
 import RNFetchBlob from 'rn-fetch-blob';
-import { ma } from '../helpers/utils';
+import { ma } from '../../helpers/utils';
 import TrackPlayer from 'react-native-track-player';
 const RNFS = require('react-native-fs');
 

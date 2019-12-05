@@ -20,6 +20,11 @@ export default {
   yellow: '#feca57',
   lightRed: '#ff6b6b',
   joustBlue: '#54a0ff',
-  homeBlue: '#405CE5CB',
+
   listHeaderColor: '#72C9FD',
+  screenBGColor: '#F6F7FB',
+  homeBlue: '#405CE5',
+  navBarHeader: '#405CE5',
+  playBGColor: '#3A7FEF',
+  tabBGColor:'#405CE5'
 };

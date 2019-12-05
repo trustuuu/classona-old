@@ -99,12 +99,16 @@ class MyPhraseEdit extends Component{
     }
     render(){
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor:'#F6F7FB'}}>
+                <View style={{backgroundColor:'#405CE5', paddingTop: 30}}>
+                <Header viewStyle={{backgroundColor:'#405CE5'}}
+                        textStyle={{fontSize:14, fontFamily: 'GillSans-SemiBold', textTransform: 'uppercase', color: colors.white}}
+                        headerText="Add To Dictionary" />
+                </View>
             <Card>
-                <Header/>
-                <CardSection>
+                <CardSection style={{marginLeft:10, marginRight:10, borderRadius:25, borderBottomWidth:0}}>
                     <TextInput
-                        style={{height:100}}
+                        style={{height:150}}
                         editable = {true}
                         multiline = {true}
                         label="Phrase"
@@ -118,10 +122,10 @@ class MyPhraseEdit extends Component{
                         value={this.state.phrase.phrase}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={{marginLeft:10, marginRight:10, marginTop:5, borderRadius:25, borderBottomWidth:0}}>
                     <TextInput
                         //secureTextEntry
-                        style={{height:100}}
+                        style={{height:150}}
                         editable = {true}
                         multiline = {true}
                         label="Description"
@@ -134,11 +138,19 @@ class MyPhraseEdit extends Component{
                 </CardSection>
 
                 {this.renderError()}
-                <CardSection>                    
-                    {this.renderButton()}
+                <CardSection style={{backgroundColor:'transparent', borderBottomWidth:0}}>                    
+                    {/* {this.renderButton()}
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => Actions.pop() }>
                         <Image style={styles.buttonRight} source={require('../../img/cancel.png')}></Image>
+                    </TouchableOpacity> */}
+                <View style={{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'flex-end'}}>
+                    <TouchableOpacity style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
+                        <Text style={{textAlign: 'center', color:'white'}}>Save</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={[styles.buttonStyle, {marginLeft:5}]} onPress={()=> {Actions.pop()}}>
+                        <Text style={{textAlign: 'center', color:'white'}}>Cancel</Text>
+                    </TouchableOpacity>
+                </View>
                 </CardSection>
             </Card>
             </View>
@@ -160,6 +172,17 @@ const styles = {
     buttonRight: {
     width: 50,
     height: 50,
+    },
+    buttonStyle: {
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 5, 
+        backgroundColor: '#405CE5',
+        borderRadius: 25, 
+        height: 48, 
+        width: 150, 
+        //margin:5
     },
     errorTextStyle: {
         fontSize: 20,

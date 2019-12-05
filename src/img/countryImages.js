@@ -22,5 +22,6 @@ export default countryImages={
     "en": {img:require("./en.png"), title: "English"},
     "ko": {img:require("./ko.png"), title: "Korean"},
     "zh": {img:require("./zh.png"), title: "Chinese"},
+    "zh-HK": {img:require("./zh-HK.png"), title: "Cantonese"},
 }
 

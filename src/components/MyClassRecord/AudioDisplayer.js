@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions } from 'react-native';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
 
 const AudioDisplayer = ({data, height, width, max, multiplyer}) => {
     const boxHeights = data.map((oneBoxHeight) => (height + (oneBoxHeight * multiplyer)));

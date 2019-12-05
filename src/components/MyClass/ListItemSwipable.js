@@ -8,7 +8,7 @@ import { deleteClassActions, deleteClassInstructorActions, selectClassActions, g
 
 import colors from '../../styles/colors';
 import global from '../../helpers/global.js';
-const bookmarkImg = require('../../img/bookmark.png');
+const bookmarkImg = require('../../img/bookmarkIcon.png');
 
 class ListItem extends Component {
 
@@ -42,7 +42,7 @@ class ListItem extends Component {
                         alignSelf: 'flex-end',
                     }}
                 >
-                <Image style={{width:20, height:20}} source={bookmarkImg} />
+                <Image style={{width:20, height:26}} source={bookmarkImg} />
                 </View>
             )
         }
@@ -54,8 +54,14 @@ class ListItem extends Component {
         const {className, instructor, instructorDisplayName, institution, media, classDate, bookmark} = this.props.oClass;
 
         const bookmarkButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImage} source={require('../../img/bookmark-white.png')} />
+                  <Text style={styles.swipeOutText}>Bookmark</Text>
+                </View>
+              ),
             text: 'Bookmark',
-            backgroundColor: '#00cec9',
+            backgroundColor: '#FADA83',
             underlayColor: '#dfe6e9',
             onPress: () => { 
                 this.props.addClassBookmark(this.props.oClass.classId, null, global.userType, global.class, this.props.oClass.items[0], 0, "class");
@@ -63,8 +69,14 @@ class ListItem extends Component {
         }
 
         const unBookmarkButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImage} source={require('../../img/bookmark-white.png')} />
+                  <Text style={styles.swipeOutText}>Unbookmark</Text>
+                </View>
+              ),
             text: 'Unbookmark',
-            backgroundColor: '#ffbe76',
+            backgroundColor: '#3A7FEF',
             underlayColor: '#ffbe76',
             onPress: () => {
                 this.props.removeClassBookmark(this.props.oClass.classId, null, global.userType);
@@ -72,6 +84,12 @@ class ListItem extends Component {
         }
 
         const deleteButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImage} source={require('../../img/trash-white.png')} />
+                  <Text style={styles.swipeOutText}>Delete</Text>
+                </View>
+              ),
                 text: 'Delete',
                 backgroundColor: '#d63031',
                 underlayColor: '#dfe6e9',
@@ -102,31 +120,29 @@ class ListItem extends Component {
         swipeBtns.push(deleteButton);
 
         return (
-            <Card style={{borderRadius:15}}>
                 <Swipeout right={swipeBtns} left={swipeInstructorBtns}
                     autoClose={true}
                     backgroundColor='transparent'
                 >
-                    <TouchableHighlight
-                        underlayColor='#0984e3'
-                    >
                         <View>
-                        <CardSection style={{backgroundColor: global.backgroundColor, borderTopLeftRadius: 15, borderTopRightRadius: 15}}>
-                            <TouchableOpacity style={styles.titleStyle} title={className} onPress={ () => this.onSelect() }>
+                    <TouchableHighlight underlayColor='#0984e3'>
+                        <TouchableOpacity title={className} onPress={ () => this.onSelect() }>
+                        <Card style={{borderRadius:15, borderBottomWidth: 0, borderTopWidth: 0}}>
+                        <CardSection style={{backgroundColor: global.backgroundColor, borderTopLeftRadius: 15, borderTopRightRadius: 15, borderBottomWidth: 0, borderTopWidth: 0}}>
                                     <Text style={styles.titleStyle}>{className.replace('privateClass', 'Personal Recording')} </Text>
-                            </TouchableOpacity>
                             { this.renderBookmarkIcon() }
                         </CardSection>
-                        <CardSection>
+                        <CardSection style={{borderBottomWidth: 0, borderTopWidth: 0}}>
                             <Text style={styles.descStyle}>Instructor: {instructorDisplayName} from {institution.replace('privateInstitution', 'myself')}</Text>
                         </CardSection>
-                        <CardSection style={{backgroundColor: global.backgroundColor, borderBottomLeftRadius: 15, borderBottomRightRadius: 15}}>
+                        <CardSection style={{backgroundColor: global.backgroundColor, borderBottomLeftRadius: 15, borderBottomRightRadius: 15, borderBottomWidth: 0, borderTopWidth: 0}}>
                             <Text style={styles.descStyle}>Date: {classDate}</Text>
                         </CardSection>
-                        </View>
+                        </Card>
+                        </TouchableOpacity>
                     </TouchableHighlight>
+                    </View>
                 </Swipeout>
-            </Card>
         );
     }
     
@@ -135,8 +151,14 @@ class ListItem extends Component {
         const {className, instructor, instructorDisplayName, institution, media, classDate, bookmark} = this.props.oClass;
 
         const bookmarkButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImageSmall} source={require('../../img/bookmark-white.png')} />
+                  <Text style={styles.swipeOutTextSmall}>Bookmark</Text>
+                </View>
+              ),
             text: 'Bookmark',
-            backgroundColor: '#00cec9',
+            backgroundColor: '#FADA83',
             underlayColor: '#dfe6e9',
             onPress: () => { 
                 this.props.addClassBookmark(this.props.oClass.classId, null, global.userType, global.class, this.props.oClass.items[0], 0, "class");
@@ -144,8 +166,14 @@ class ListItem extends Component {
         }
 
         const unBookmarkButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImageSmall} source={require('../../img/bookmark-white.png')} />
+                  <Text style={styles.swipeOutTextSmall}>Unbookmark</Text>
+                </View>
+              ),
             text: 'Unbookmark',
-            backgroundColor: '#ffbe76',
+            backgroundColor: '#3A7FEF',
             underlayColor: '#ffbe76',
             onPress: () => {
                 this.props.removeClassBookmark(this.props.oClass.classId, null, global.userType);
@@ -153,6 +181,12 @@ class ListItem extends Component {
         }
 
         const deleteButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImageSmall} source={require('../../img/trash-white.png')} />
+                  <Text style={styles.swipeOutTextSmall}>Delete</Text>
+                </View>
+              ),
                 text: 'Delete',
                 backgroundColor: '#d63031',
                 underlayColor: '#dfe6e9',
@@ -173,26 +207,56 @@ class ListItem extends Component {
 
         return (
             
-            <Card>
-             <Swipeout right={swipeBtns}
-            autoClose={true}
-            backgroundColor='transparent'
-            >
-                <TouchableHighlight
-                underlayColor='#0984e3'
+            <Swipeout right={swipeBtns}
+                    autoClose={true}
+                    backgroundColor='transparent'
                 >
-                <View>
-
-                <CardSection  style={{backgroundColor: global.backgroundColor}}>
-                    <TouchableOpacity style={styles.titleStyle} title={classDate} onPress={ () => this.onSelect() }>
-                                    <Text style={styles.titleStyle}>{classDate} [ {instructorDisplayName} ]</Text>
-                    </TouchableOpacity>
-                    { this.renderBookmarkIcon() }
-                </CardSection>
-                </View></TouchableHighlight>
+                        <View>
+                    <TouchableHighlight underlayColor='#0984e3'>
+                        <TouchableOpacity title={classDate} onPress={ () => this.onSelect() }>
+                        <Card style={{borderBottomWidth: 0, borderTopWidth: 0}}>
+                        <CardSection 
+                            style={{flex:1,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    backgroundColor: global.backgroundColor,
+                                    paddingTop: 10,
+                                    height: 40, 
+                                    borderRadius: 15, 
+                                    borderBottomWidth: 0, 
+                                    borderTopWidth: 0}}
+                            >
+                            <Text style={styles.titleStyle}>Date: </Text>
+                            <Text style={[styles.titleStyle, {fontFamily: 'GillSans-Light'}]}>{classDate} </Text>
+                            { this.renderBookmarkIcon() }
+                            <Text style={[styles.titleStyle]}>{instructorDisplayName} </Text>
+                        </CardSection>
+                        </Card>
+                        </TouchableOpacity>
+                    </TouchableHighlight>
+                    </View>
                 </Swipeout>
-            </Card>
             
+
+            // <Card style={{borderBottomWidth: 0, borderTopWidth: 0}}>
+            //     <Swipeout right={swipeBtns}
+            //     autoClose={true}
+            //     backgroundColor='transparent' 
+            //     >
+            //         <TouchableHighlight
+            //         underlayColor='#0984e3'
+            //         >
+            //         <TouchableOpacity style={styles.titleStyle} title={classDate} onPress={ () => this.onSelect() }>
+            //         <View>
+            //             <CardSection style={{backgroundColor: global.backgroundColor, borderBottomWidth: 0, borderTopWidth: 0}}>
+            //                                 <Text style={styles.titleStyle}>{classDate} [ {instructorDisplayName} ]</Text>
+            //                 { this.renderBookmarkIcon() }
+            //             </CardSection>
+            //         </View>
+            //         </TouchableOpacity>
+            //         </TouchableHighlight>
+            //     </Swipeout>
+            // </Card>
 
         );
     }
@@ -214,15 +278,44 @@ class ListItem extends Component {
 
 const styles = {
     titleStyle: {
-      fontSize: 15,
-      fontWeight: "bold",
-      color: colors.green01,
-      paddingLeft: 15
+      //fontWeight: "bold",
+      color: '#434667',
+      paddingLeft: 20,
+      textTransform: 'uppercase',
+      fontFamily: 'GillSans-SemiBold',
+      fontSize: 14
     },
     descStyle: {
-        fontSize: 10,
+        fontSize: 12,
         paddingLeft: 20
-      }
+      },
+    swipeOutView: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    swipeOutImage: {
+        width: 20,
+        height: 26
+    },
+    swipeOutText: {
+        paddingTop: 5,
+        color: colors.white,
+        fontFamily: 'GillSans-Light',
+        fontSize: 14
+    },
+    swipeOutImageSmall: {
+        width: 14,
+        height: 20
+    },
+    swipeOutTextSmall: {
+        paddingTop: 2,
+        color: colors.white,
+        fontFamily: 'GillSans-Light',
+        fontSize: 14
+    }
+    
   };
 
 

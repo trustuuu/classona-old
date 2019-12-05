@@ -78,58 +78,53 @@ class SideMenu extends Component {
 
         return (
             // <ScrollView bounces={true}>
-            
-            <Card >
+            <View style={[styles.cardStyle, {height: '100%'}]}>
+            <Card style={styles.cardStyle}>
             <Header>Filter or Sort</Header>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectHome() }>
                         <Image style={styles.buttonLeft} source={require('../img/button_home.png')}></Image>
                         <Text style={styles.titleStyle}>Home</Text>
                     </TouchableOpacity>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectSort() }>
-                        <Image style={styles.buttonLeft} source={require('../img/video.png')}></Image>
+                        <Image style={styles.buttonLeft} source={require('../img/button_class.png')}></Image>
                         <Text style={styles.titleStyle}>Class</Text>
                     </TouchableOpacity>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectDictionary() }>
                         <Image style={styles.buttonLeft} source={require('../img/library.png')}></Image>
                         <Text style={styles.titleStyle}>Lab</Text>
                     </TouchableOpacity>
                 </CardSection>
-                {/* <CardSection>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectMyBookmark() }>
-                        <Image style={styles.buttonLeft} source={require('../img/bookmark.png')}></Image>
-                        <Text style={styles.titleStyle}>Bookmark</Text>
-                    </TouchableOpacity>
-                </CardSection> */}
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectUserProfile() }>
                         <Image style={styles.buttonLeft} source={require('../img/profile.png')}></Image>
                         <Text style={styles.titleStyle}>Profile</Text>
                     </TouchableOpacity>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectMyLanguages() }>
-                        <Image style={styles.buttonLeft} source={require('../img/settings.png')}></Image>
+                        <Image style={styles.buttonLeft} source={require('../img/button_language.png')}></Image>
                         <Text style={styles.titleStyle}>My Languages</Text>
                     </TouchableOpacity>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onSelectMySettings() }>
-                        <Image style={styles.buttonLeft} source={require('../img/settings.png')}></Image>
+                        <Image style={styles.buttonLeft} source={require('../img/myplan.png')}></Image>
                         <Text style={styles.titleStyle}>My Plan</Text>
                     </TouchableOpacity>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.cardStyle}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onLogOut() }>
                         <Image style={styles.buttonLeft} source={require('../img/logout.png')}></Image>
                         <Text style={styles.titleStyle}>Logout</Text>
                     </TouchableOpacity>
                 </CardSection>
             </Card>
+            </View>
             //</ScrollView>
 
         );
@@ -145,20 +140,30 @@ const styles = {
         alignItems: 'stretch',
     },
     titleStyle: {
-      fontSize: 18,
-      fontWeight: "bold",
-      color: colors.green01,
+      fontSize: 13,
+      textTransform: 'uppercase',
+      fontFamily: 'GillSans-Light',
+      //fontWeight: "bold",
+      color: colors.white,
       paddingLeft: 15
     },
     descStyle: {
         fontSize: 10,
-        paddingLeft: 20
+        paddingLeft: 20,
     },
     buttonLeft: {
-    width: 30,
-    height: 30,
+    width: 22,
+    height: 22,
     marginLeft: 10,
     },
+    cardStyle: {
+    backgroundColor:'#18204D',
+    borderBottomWidth: 0,
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    paddingBottom: 40
+    }
   };
 
 //export default SideMenu;

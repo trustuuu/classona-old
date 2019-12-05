@@ -197,14 +197,16 @@ export default class RNPickerSelect extends PureComponent {
     }
 
     getPlaceholderStyle() {
-        const { placeholder, placeholderTextColor } = this.props;
+        const { placeholder, placeholderTextColor, selectStyle } = this.props;
 
         if (!isEqual(placeholder, {}) && this.state.selectedItem.label === placeholder.label) {
             return {
+                ...selectStyle,
                 color: placeholderTextColor,
+                //borderRadius: 25, width:330, backgroundColor:'white', borderColor:'transparent'
             };
         }
-        return {};
+        return {...selectStyle};
     }
 
     triggerOpenCloseCallbacks() {

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import countryImages from '../img/countryImg';
+import countryImages from '../img/countryImages';
 
 import {
   checkLoginUser,
@@ -131,6 +131,7 @@ class HomeForm extends Component {
     }
 
     oStudentTiles.forEach((item, index) => {
+      console.log('item =>', item, countryImages);
       btnArrary.push(
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <TouchableOpacity

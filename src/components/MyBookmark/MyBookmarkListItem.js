@@ -25,65 +25,51 @@ class MyBookmarkListItem extends Component {
     render(){
         const {className, startSecs, category, media, bookmarkId} = this.props.bookmark;
         const mediaArray = media ? media.split('_') : [];
-        //const classId = `${mediaArray[1]}_${mediaArray[4]}`;
         const classId = className === 'privateClass' ? `${mediaArray[2]}_${mediaArray[5]}` : `${mediaArray[1]}_${mediaArray[4]}`;
 
-        console.log('bookmark select => ', this.props.bookmark, media, mediaArray, classId, )
-        // let deleteButton = {
-        //     text: 'Delete',
-        //     backgroundColor: '#d63031',
-        //     underlayColor: '#dfe6e9',
-        //     onPress: () => {
-        //         this.props.deleteMyPhrase(this.props.bookmark.bookmarkId); 
-        //         }
-        // }
+        //console.log('bookmark select => ', this.props.bookmark, media, mediaArray, classId, )
 
-        let unBookmarkButton = {
+        const unBookmarkButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImage} source={require('../../img/bookmark-white.png')} />
+                  <Text style={styles.swipeOutText}>Unbookmark</Text>
+                </View>
+              ),
             text: 'Unbookmark',
-            backgroundColor: '#ffbe76',
+            backgroundColor: '#3A7FEF',
             underlayColor: '#ffbe76',
-            onPress: () => { 
+            onPress: () => {
                 this.props.removeClassBookmark(bookmarkId, null, "student")
-                }
+            }
         }
         
-        // let bookmarkButton = {
-        //     text: 'Bookmark',
-        //     backgroundColor: '#00cec9',
-        //     underlayColor: '#dfe6e9',
-        //     onPress: () => { 
-        //         this.props.setMyPhraseBookmark(this.props.bookmark.bookmarkId, true); 
-        //         }
-        // }
-
         let swipeBtns = [unBookmarkButton];
-        //let swipeBtns = this.props.bookmark ? [unBookmarkButton] : [bookmarkButton];
-        //if (!this.props.bookmark) swipeBtns.push(deleteButton);
 
         return (
-            
-            <Card>
-                <Swipeout right={swipeBtns}
-                    autoClose={true}
-                    backgroundColor= 'transparent'>
-                    <TouchableHighlight underlayColor='#0984e3'>
-                        <View>
-                            <CardSection>
-                                <TouchableOpacity style={styles.titleStyle} title={className} onPress={ () => this.onSelect(classId, media, startSecs) }>
-                                    <Text style={styles.titleStyle}>{className} </Text>
-                                </TouchableOpacity>
-                            </CardSection>
-                            
-                            <CardSection>
-                                <Text style={styles.descStyle}>{ category == "script" ? `bookmark point: (${startSecs}) seconds`: 'class'} </Text>
-                            </CardSection>
-                            <CardSection>
-                                <Text style={styles.descStyle}>{mediaArray.length > 0 ? `Institution: ${mediaArray[2]}` : 'Private' }</Text>
-                            </CardSection>
-                        </View>
-                    </TouchableHighlight>
-                </Swipeout>
-            </Card>
+            <Swipeout right={swipeBtns}
+                autoClose={true}
+                backgroundColor='transparent'
+            >
+                    <View>
+                <TouchableHighlight underlayColor='#0984e3'>
+                    <TouchableOpacity title={className} onPress={ () => this.onSelect(classId, media, startSecs) }>
+                    <Card style={{borderRadius:15, borderBottomWidth: 0, borderTopWidth: 0}}>
+                    <CardSection style={{backgroundColor: global.backgroundColor, borderTopLeftRadius: 15, borderTopRightRadius: 15, borderBottomWidth: 0, borderTopWidth: 0}}>
+                                <Text style={styles.titleStyle}>{className.replace('privateClass', 'Personal Recording')} </Text>
+                    </CardSection>
+                    <CardSection style={{borderBottomWidth: 0, borderTopWidth: 0}}>
+                        <Text style={styles.descStyle}>{category == "script" ? `bookmark point: (${startSecs}) seconds`: 'class'}</Text>
+                    </CardSection>
+                    <CardSection style={{backgroundColor: global.backgroundColor, borderBottomLeftRadius: 15, borderBottomRightRadius: 15, borderBottomWidth: 0, borderTopWidth: 0}}>
+                        <Text style={styles.descStyle}>{mediaArray.length > 0 ? `Institution: ${mediaArray[2]}` : 'Private' }</Text>
+                    </CardSection>
+                    </Card>
+                    </TouchableOpacity>
+                </TouchableHighlight>
+                </View>
+            </Swipeout>
+
         );
     }
 
@@ -92,18 +78,35 @@ class MyBookmarkListItem extends Component {
 
 const styles = {
     titleStyle: {
-      fontSize: 15,
-      fontWeight: "bold",
-      color: colors.green01,
-      paddingLeft: 5,
-      textAlign: 'left'
+      //fontWeight: "bold",
+      color: '#434667',
+      paddingLeft: 20,
+      textTransform: 'uppercase',
+      fontFamily: 'GillSans-SemiBold',
+      fontSize: 14
     },
     descStyle: {
-        fontSize: 10,
+        fontSize: 12,
         paddingLeft: 20
-      }
+      },
+    swipeOutView: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    swipeOutImage: {
+        width: 20,
+        height: 26
+    },
+    swipeOutText: {
+        paddingTop: 5,
+        color: colors.white,
+        fontFamily: 'GillSans-Light',
+        fontSize: 14
+    }
+    
   };
-
 
 
 const MapStateToProps = ({oClass}) =>

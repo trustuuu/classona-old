@@ -67,7 +67,10 @@ class PhraseList extends Component {
     }
 
     renderHeader = () => {
-        return <Input placeholder="Type Here..." lightTheme round />;
+        return <Input containerStyle={{marginLeft:10, marginRight:5, marginTop:5, marginBottom:5,
+            borderRadius: 25, height:50, backgroundColor:'#FFFFFF' }}
+            inputStyle={{borderRadius: 25, paddingBottom:10, backgroundColor:'#FFFFFF' }}
+            type='search' placeholder="Search Here..." lightTheme round />;
      };
 
     playing = () => {
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         padding: 10,
-        backgroundColor: colors.green01,
+        backgroundColor: colors.playBGColor,
     },
     controlIcon: {
         width: 40,

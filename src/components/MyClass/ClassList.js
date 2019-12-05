@@ -67,7 +67,10 @@ class ClassListComponent extends Component {
         }
     }
     renderHeader = () => {
-        return <Input placeholder="Type Here..." lightTheme round />;
+        return <Input containerStyle={{marginLeft:10, marginRight:5, marginTop:5, marginBottom:5,
+                                        borderRadius: 25, height:50, backgroundColor:'#FFFFFF' }}
+                      inputStyle={{borderRadius: 25, paddingBottom:10, backgroundColor:'#FFFFFF' }}
+                        type='search' placeholder="Search Here..." lightTheme round />;
      };
 
     renderPrivateButton = () => {
@@ -76,10 +79,11 @@ class ClassListComponent extends Component {
 
         return (
             <TouchableHighlight style={styles.floatingButton} onPress={() => Actions.ClassRecorder()} >
-                <Text> + </Text>
+                <Image style={{width:80, height:80}} source={require('../../img/icon-create.png')}></Image>
             </TouchableHighlight>
         )
     }
+
     renderClass()
     {
         if (this.state.classes == null) return (<View></View>)
@@ -128,12 +132,13 @@ class ClassListComponent extends Component {
                         
                         renderSectionHeader={
                             ({section}) => {
+
                                 return (
-                                        <CardSection style={{backgroundColor:colors.listHeaderColor, padding: 8, fontWeight: "bold"}}>
-                                            <Text>{section.className.replace('privateClass', 'Personal Recording')}</Text>
-                                            <Text>{section.instructorDisplayName != null ? ` by ${section.instructorDisplayName}` : ''}</Text>
-                                            <Text> at {section.institution.replace('privateInstitution', 'myself')}</Text>
-                                        </CardSection>
+                                    <CardSection style={{backgroundColor:'transparent', marginTop:30, paddingLeft: 20, paddingRight: 20, fontWeight: "bold"}}>
+                                        { section.className ? <Text>{section.className.replace('privateClass', 'Personal Recording')}</Text> : <View></View>}
+                                        { section.instructorDisplayName ? <Text> | {section.instructorDisplayName}</Text> : <View></View> }
+                                        { section.institution ? <Text> | {section.institution.replace('privateInstitution', 'Self Recording')}</Text> : <View></View>}
+                                    </CardSection>
                                 )
                             }
                         }
@@ -141,7 +146,7 @@ class ClassListComponent extends Component {
                         //keyExtractor={oClass => oClass.classId}
                     />
                     <TouchableHighlight style={styles.floatingButton} onPress={() => Actions.ClassRecorder()} >
-                        <Text> + </Text>
+                        <Image style={{width:80, height:80}} source={require('../../img/icon-create.png')}></Image>
                     </TouchableHighlight>
                 {this.showSpin()}
                 </View>
@@ -197,7 +202,7 @@ const styles = StyleSheet.create({
     },
 
     floatingButton: {
-        backgroundColor: colors.green02,
+        //backgroundColor: colors.green02,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',

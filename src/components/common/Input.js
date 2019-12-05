@@ -1,21 +1,24 @@
 import React from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View, Text, Image } from 'react-native';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
-  const { inputStyle, labelStyle, containerStyle } = styles;
+const Input = (props) => {
+  const { label, value, multiline, onSubmitEditing, onChangeText, placeholder, secureTextEntry } = props;
+  const { inputInnerStyle, labelInnerStyle, containerInnerStyle } = styles;
 
   if (label)
   {
     return (
-      <View style={containerStyle}>
-        <Text style={labelStyle}>{label}</Text>
+      <View style={[containerInnerStyle, props.containerStyle]}>
+        <Text style={[labelInnerStyle, props.labelStyle]}>{label}</Text>
         <TextInput
           secureTextEntry={secureTextEntry}
           placeholder={placeholder}
           autoCorrect={false}
-          style={inputStyle}
+          multiline={multiline}
+          style={[inputInnerStyle, props.inputStyle]}
           value={value}
           onChangeText={onChangeText}
+          onSubmitEditing={onSubmitEditing}
         />
       </View>
     );
@@ -23,15 +26,17 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
   else
   {
     return (
-      <View style={containerStyle}>
-        {/* <Text style={labelStyle}>{label}</Text> */}
+      <View style={[containerInnerStyle, props.containerStyle]}>
+        {props.type == 'search' ? <Image style={{marginLeft:10, width:20, height:20}} source={require('../../img/search.png')}></Image>  : <View></View>}
         <TextInput
           secureTextEntry={secureTextEntry}
           placeholder={placeholder}
           autoCorrect={false}
-          style={inputStyle}
+          multiline={multiline}
+          style={[inputInnerStyle, props.inputStyle]}
           value={value}
           onChangeText={onChangeText}
+          onSubmitEditing={onSubmitEditing}
         />
       </View>
     );
@@ -39,29 +44,29 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 };
 
 const styles = {
-  inputStyle: {
+  inputInnerStyle: {
     color: '#000',
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 14,
     lineHeight: 23,
     flex: 2,
-    borderRadius: 25,
+    //borderRadius: 25,
     backgroundColor: '#FFFFFF',
     width: 311,
     height: 50,
 
   },
-  labelStyle: {
+  labelInnerStyle: {
     fontSize: 18,
     paddingLeft: 20,
     flex: 1
   },
-  containerStyle: {
+  containerInnerStyle: {
     height: 40,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 };
 

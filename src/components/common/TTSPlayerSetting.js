@@ -18,19 +18,19 @@ import Tts from 'react-native-tts';
 import { getTTSSetting, switchLanguage, switchVoice, switchFirstLanguage, switchFirstLanguageVoice, textChangeAction } from '../../actions';
 import { Card, CardSection, Input, Button, Spinner, Header, RNPickerSelect} from '../common';
 import ImageButton from './ImageButton';
-import iconPlay from '../../icons/play.png';
+import iconPlay from '../../icons/icon_play.png';
 import colors from '../../styles/colors';
 import languageData from './language.json';
 
 //type props = {};
 class TTSPlayerSetting extends Component{
     state = {
-        voices: [{id:'com.apple.ttsbundle.Yuna-compact'}],
+        voices: [{id:'com.apple.ttsbundle.Yuna-compact'},{id:'com.apple.ttsbundle.Tessa-compact'}],
         ttsStatus: "initiliazing",
-        selectedVoice: null,
-        selectMotherVoice: null,
-        selectedLanguage: null,
-        selectMotherLanguage: null,
+        voice: null,
+        firstLanguageVoice: null,
+        language: null,
+        firstLanguage: null,
         speechRate: 0.5,
         speechPitch: 1,
         phrase: 'Hello, Welcome to echo study! Enjoy learning and sharing.',
@@ -45,12 +45,12 @@ class TTSPlayerSetting extends Component{
       this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount()
+    async componentDidMount()
     {
-        this.setState({selectedVoice: this.props.voice,
-          selectMotherVoice: this.props.firstLanguageVoice,
-          selectedLanguage: this.props.language,
-          selectMotherLanguage: this.props.firstLanguage,
+        this.setState({voice: this.props.voice,
+          firstLanguageVoice: this.props.firstLanguageVoice,
+          language: this.props.language,
+          firstLanguage: this.props.firstLanguage,
           interval: this.props.interval,
           play: this.props.play});
 
@@ -65,54 +65,59 @@ class TTSPlayerSetting extends Component{
         );
         Tts.setDefaultRate(this.state.speechRate);
         Tts.setDefaultPitch(this.state.speechPitch);
-        Tts.getInitStatus().then(this.initTts);
+        Tts.getInitStatus().then(await this.initTts());
     }
 
-    static getDerivedStateFromProps(nextProps, prevState){
-      console.log('getDerivedStateFromProps', nextProps,  prevState);
-        if(nextProps.voice !== prevState.selectedVoice) return { voice: nextProps.voice };
+    static getDerivedStateFromProps(prevState, nextProps){
+      //console.log('getDerivedStateFromProps',  prevState.language, nextProps.language, nextProps.voice);
+        if(nextProps.voice !== prevState.voice) return { voice: nextProps.voice };
         else if(nextProps.interval !== prevState.interval) return { interval: nextProps.interval };
-        else if(nextProps.firstLanguageVoice !== prevState.selectMotherVoice) return { firstLanguageVoice: nextProps.firstLanguageVoice };
-        else if(nextProps.language !== prevState.selectedLanguage) return { language: nextProps.language };
-        else if(nextProps.firstLanguage !== prevState.selectMotherLanguage) return { firstLanguage: nextProps.firstLanguage };
+        else if(nextProps.firstLanguageVoice !== prevState.firstLanguageVoice) return { firstLanguageVoice: nextProps.firstLanguageVoice };
+        else if(nextProps.language !== prevState.language) return { language: nextProps.language };
+        else if(nextProps.firstLanguage !== prevState.firstLanguage) return { firstLanguage: nextProps.firstLanguage };
         else if(nextProps.play !== prevState.play) return { play: nextProps.play };
         else return null;
         
     }
 
     componentDidUpdate(prevProps, prevState) {
-      console.log('componentDidUpdate', prevProps.play, this.props.play, prevState);
-      if(prevProps.voice !== this.props.voice) this.setState({selectedVoice: this.props.voice});
-      if(prevProps.firstLanguageVoice !== this.props.firstLanguageVoice) this.setState({selectMotherVoice: this.props.firstLanguageVoice});
-      if(prevProps.language !== this.props.language) this.setState({selectedLanguage: this.props.language});
-      if(prevProps.firstLanguage !== this.props.firstLanguage) this.setState({selectMotherLanguage: this.props.firstLanguage});
+      //console.log('componentDidUpdate, prevProps, prevState', prevProps.language, this.props.language, this.props.voice, prevProps, prevState);
+      if(prevProps.voice !== this.props.voice) {
+        //console.log('this.props.voice', this.props.voice);
+        this.setState({voice: this.props.voice});
+      }
+      if(prevProps.firstLanguageVoice !== this.props.firstLanguageVoice) this.setState({firstLanguageVoice: this.props.firstLanguageVoice});
+      if(prevProps.language !== this.props.language) this.setState({language: this.props.language});
+      if(prevProps.firstLanguage !== this.props.firstLanguage) this.setState({firstLanguage: this.props.firstLanguage});
       if(prevProps.interval !== this.props.interval) this.setState({interval: this.props.interval});
       if(prevProps.play !== this.props.play) this.setState({play: this.props.play});
       //  if(prevProps.voice !== this.props.voice) {
       //   console.log('play1 ==?', prevProps.play, this.state.play, this.props.play);
-      //     this.setState({selectedVoice: this.props.voice,
-      //     selectMotherVoice: this.props.firstLanguageVoice,
-      //     selectedLanguage: this.props.language,
-      //     selectMotherLanguage: this.props.firstLanguage,
+      //     this.setState({voice: this.props.voice,
+      //     firstLanguageVoice: this.props.firstLanguageVoice,
+      //     language: this.props.language,
+      //     firstLanguage: this.props.firstLanguage,
       //     interval: this.props.interval,
       //     play: this.props.play});
       // }
-      console.log('play ==?', prevProps.play, this.state.play, this.props.play, this.props.interval);
+      //console.log('play ==?', prevProps.language, "======", this.state.language, this.props.language, this.state.voices, this.state.voices.filter((voice) => voice.languageId == this.state.language));
     }
 
     //{language: "ar-SA", id: "com.apple.ttsbundle.Maged-compact", quality: 300, name: "Maged"}
     initTts = async () => {
       const voices = await Tts.voices();
-      console.log('voices=>', voices);
+      //console.log('voices=>', voices);
       const availableVoices = voices
           .filter(v => !v.networkConnectionRequired && !v.notInstalled)
           .map(v => {
           return { id: v.id, name: v.name, language: v.language, label: `${v.name}(${v.language})`, languageId: v.language.split('-')[0], value: v.id} //value: {id: v.id, name: v.name, language: v.language, languageId: v.language.split('-')[0]} };
           });
-      let selectedVoice = null;
+      //console.log('availableVoices', availableVoices);
+
+      let voice = null;
       if (voices && voices.length > 0) {
           
-          selectedVoice = voices[0].id;
+          //voice = voices[0].id;
           try {
               await Tts.setDefaultLanguage(voices[0].language);
           }
@@ -122,7 +127,7 @@ class TTSPlayerSetting extends Component{
           }
           this.setState({
               voices: availableVoices,
-              selectedVoice,
+              //voice,
               ttsStatus: "initialized"
           });
       }
@@ -134,7 +139,7 @@ class TTSPlayerSetting extends Component{
     readText = async (text, voiceId) => {
 
       const voice = this.state.voices.filter(voice => voice.id == voiceId)[0];
-      console.log('readText', voiceId, voice, this.state.voices);
+      //console.log('readText', voiceId, voice, this.state.voices);
        try{
         await Tts.setDefaultLanguage(voice.language);
       } catch (err) {
@@ -154,20 +159,46 @@ class TTSPlayerSetting extends Component{
       this.props.textChangeAction(event);
     }
 
+
+    setSpeechInterval = async rate => {
+      this.setState({ interval: rate.toFixed(0) });
+    };
+
+    setSpeechIntervalChange = async rate => {
+      clearTimeout(this.sliderTimeoutId)
+      this.sliderTimeoutId = setTimeout(() => {
+        this.setSpeechInterval(rate)
+      }, 100)
+    }
+
     setSpeechRate = async rate => {
       await Tts.setDefaultRate(rate);
       this.setState({ speechRate: rate });
     };
+
+    setSpeechRateChange = async rate => {
+      clearTimeout(this.sliderTimeoutId)
+      this.sliderTimeoutId = setTimeout(() => {
+        this.setSpeechRate(rate)
+      }, 100)
+    }
 
     setSpeechPitch = async rate => {
       await Tts.setDefaultPitch(rate);
       this.setState({ speechPitch: rate });
     };
 
+    setSpeechPitchChange = async rate => {
+      clearTimeout(this.sliderTimeoutId)
+      this.sliderTimeoutId = setTimeout(() => {
+        this.setSpeechPitch(rate)
+      }, 100)
+    }
+
 
     onVoicePress = async voice => {
       //const voice = this.state.voices.filter(voice => voice.id == voiceId)[0];
-      console.log('voice sel 1=>', voice);
+      //console.log('voice sel 1=>', voice);
       try {
 
       //await Tts.setDefaultLanguage(voice.language);
@@ -176,14 +207,14 @@ class TTSPlayerSetting extends Component{
       console.log(`setDefaultLanguage error `, err);
       }
       //await Tts.setDefaultVoice(voice.id);
-      this.setState({ selectedVoice: voice});
+      this.setState({ voice: voice});
       this.props.switchVoice(voice);
     };
 
 
     onLanguagePress = async lang => {
       //const voice = this.state.voices.filter(voice => voice.id == voiceId)[0];
-      console.log('voice lang=>', lang);
+      //console.log('voice lang=>', lang);
       try {
 
       //await Tts.setDefaultLanguage(voice.language);
@@ -192,13 +223,13 @@ class TTSPlayerSetting extends Component{
       console.log(`setDefaultLanguage error `, err);
       }
       //await Tts.setDefaultVoice(voice.id);
-      this.setState({ selectedLanguage: lang});
+      this.setState({ language: lang});
       this.props.switchLanguage(lang);
     };
 
     onMotherVoicePress = async voice => {
       //const voice = this.state.voices.filter(voice => voice.id == voiceId)[0];
-      console.log('onMotherVoicePress voice=>', voice);
+      //console.log('onMotherVoicePress voice=>', voice);
       try {
         //await Tts.setDefaultLanguage(voice.language);
       } catch (err) {
@@ -206,12 +237,12 @@ class TTSPlayerSetting extends Component{
       console.log(`setDefaultLanguage error `, err);
       }
         //await Tts.setDefaultVoice(voice.id);
-      this.setState({ selectMotherVoice: voice});
+      this.setState({ firstLanguageVoice: voice});
       this.props.switchFirstLanguageVoice(voice);
     };
 
     onMotherLanguagePress = async lang => {
-      console.log('onMotherLanguagePress lang=>', lang);
+      //console.log('onMotherLanguagePress lang=>', lang);
       //const voice = this.state.voices.filter(voice => voice.id == voiceId)[0];
       try {
         //await Tts.setDefaultLanguage(voice.language);
@@ -220,30 +251,50 @@ class TTSPlayerSetting extends Component{
       //console.log(`setDefaultLanguage error `, err);
       }
         //await Tts.setDefaultVoice(voice.id);
-      this.setState({ selectMotherLanguage: lang});
+      this.setState({ firstLanguage: lang});
       this.props.switchFirstLanguage(lang);
     };
 
     
 render() {
+    console.log('render', this.state.voices, this.state.language, this.state.voice, this.state.voices.filter((voice) => voice.languageId == this.state.language));
     return (
-      <View style={[styles.container, {borderWidth: 0}]}>
-        <Card style={{borderWidth: 0, backgroundColor: colors.green01}}>
+      <View style={[styles.container, styles.cardStyle, {borderWidth: 0}]}>
+        <Card containerStyle={styles.cardStyle}>
           <CardSection style={styles.container}>   
-            <TextInput
+            <Text style={styles.groupLabelStyle}>Language</Text>
+          </CardSection>
+
+          <CardSection style={styles.container}>   
+            {/* <TextInput
               style={styles.textInput}
               multiline={true}
               onChangeText={text => this.setState({ text })}
               value={this.state.phrase}
               onSubmitEditing={Keyboard.dismiss}
-            />
+            /> */}
+            <View style={styles.groupContainer}>
+              <Input containerStyle={{//margin:5,
+                                      borderRadius: 15,
+                                      height:60,
+                                      width: 350,
+                                      backgroundColor:'#FFFFFF'}}
+                      inputStyle={{paddingTop:1,borderRadius: 25, width: 250, backgroundColor:'#FFFFFF' }}
 
-            <ImageButton
-              source={iconPlay}
-              onPress={() => this.readText(this.state.phrase, this.state.selectedVoice)}
-              style={styles.playPause}
-              imageStyle={styles.controlIcon}
-            />
+                      multiline={true}
+                      onChangeText={text => this.setState({ text })}
+                      value={this.state.phrase}
+                      onSubmitEditing={Keyboard.dismiss}
+                      lightTheme round />
+
+
+              <ImageButton
+                source={iconPlay}
+                onPress={() => this.readText(this.state.phrase, this.state.voice)}
+                style={styles.iconPlay}
+                imageStyle={styles.controlIcon}
+              />
+            </View>
           </CardSection>
 
           <CardSection style={styles.container}>
@@ -252,6 +303,8 @@ render() {
                   label: 'Select a language...',
                   value: null,
                   color: '#9EA0A4',
+                  borderRadius: 25,
+                  //width: 350
               }}
               items={languageData}
               onValueChange={(value) => {
@@ -264,12 +317,14 @@ render() {
                   //this.inputRefs.picker2.togglePicker();
               }}
               style={{ ...pickerSelectStyles }}
-              value={this.props.language}
+              selectStyle={styles.selectStyle}
+              value={this.state.language}
               ref={(el) => {
                   //this.inputRefs.picker = el;
               }}
             />
           </CardSection>
+          
           <CardSection style={styles.container}>
             <RNPickerSelect
               placeholder={{
@@ -277,7 +332,7 @@ render() {
                   value: null,
                   color: '#9EA0A4',
               }}
-              items={this.state.voices.filter((voice) => voice.languageId == this.props.language)}
+              items={this.state.voices.filter((voice) => voice.languageId == this.state.language)}
               onValueChange={(value) => {
                   this.onVoicePress(value);
               }}
@@ -288,7 +343,8 @@ render() {
                   //this.inputRefs.picker2.togglePicker();
               }}
               style={{ ...pickerSelectStyles }}
-              value={this.props.voice}
+              selectStyle={styles.selectStyle}
+              value={this.state.voice}
               ref={(el) => {
                   //this.inputRefs.picker = el;
               }}
@@ -298,21 +354,39 @@ render() {
           
         <Card>
           <CardSection style={styles.container}>   
-            <TextInput
+            <Text style={styles.groupLabelStyle}>Mother Language</Text>
+          </CardSection>
+          <CardSection style={styles.container}>   
+            {/* <TextInput
               style={styles.textInput}
               multiline={true}
               onChangeText={text => this.setState({ text })}
               value={this.state.description}
               onSubmitEditing={Keyboard.dismiss}
-            />
+            /> */}
+            <View style={styles.groupContainer}>
+            <Input containerStyle={{//margin:5,
+                                    
+                                    borderRadius: 15,
+                                    height:60,
+                                    width: 350,
+                                    backgroundColor:'#FFFFFF'}}
+                    inputStyle={{paddingTop:1,borderRadius: 25, width: 250, backgroundColor:'#FFFFFF' }}
+
+                    multiline={true}
+                    onChangeText={text => this.setState({ text })}
+                    value={this.state.description}
+                    onSubmitEditing={Keyboard.dismiss}
+                    lightTheme round />
+
             <ImageButton
               source={iconPlay}
-              onPress={() => this.readText(this.state.description, this.state.selectMotherVoice)}
-              style={styles.playPause}
+              onPress={() => this.readText(this.state.description, this.state.firstLanguageVoice)}
+              style={styles.iconPlay}
               imageStyle={styles.controlIcon}
             />
+            </View>
           </CardSection>
-
           <CardSection style={styles.container}>
               <RNPickerSelect
                 placeholder={{
@@ -331,7 +405,8 @@ render() {
                     //this.inputRefs.picker2.togglePicker();
                 }}
                 style={{ ...pickerSelectStyles }}
-                value={this.props.firstLanguage}
+                selectStyle={styles.selectStyle}
+                value={this.state.firstLanguage}
                 ref={(el) => {
                     //this.inputRefs.picker = el;
                 }}
@@ -344,7 +419,7 @@ render() {
                     value: null,
                     color: '#9EA0A4',
                 }}
-                items={this.state.voices.filter((voice) => voice.languageId == this.props.firstLanguage)}
+                items={this.state.voices.filter((voice) => voice.languageId == this.state.firstLanguage)}
                 onValueChange={(value) => {
                     this.onMotherVoicePress(value);
                 }}
@@ -355,24 +430,25 @@ render() {
                     //this.inputRefs.picker2.togglePicker();
                 }}
                 style={{ ...pickerSelectStyles }}
-                value={this.props.firstLanguageVoice}
+                selectStyle={styles.selectStyle}
+                value={this.state.firstLanguageVoice}
                 ref={(el) => {
                     //this.inputRefs.picker = el;
                 }}
               />
           </CardSection>
           <CardSection style={styles.container}>   
-            <Text style={styles.textLabel}>Play interval (sec)</Text>
+            {/* <Text style={styles.textLabel}>Play interval (sec)</Text>
             <TextInput
               style={[styles.textInput, { marginLeft:10, width:50 }]}
               multiline={true}
               onChangeText={text => this.handleChange({'interval': text})}
               value={this.state.interval}
               onSubmitEditing={Keyboard.dismiss}
-            />
+            /> */}
           </CardSection>
           <CardSection style={styles.container}>   
-            <Text style={styles.pickerTextStyle}>Select field for play</Text>
+            <Text style={styles.groupLabelStyle}>Play Options</Text>
           </CardSection>
           <CardSection style={styles.container}>
             < RNPickerSelect
@@ -392,6 +468,7 @@ render() {
                     //this.inputRefs.picker2.togglePicker();
                 }}
                 style={{ ...pickerSelectStyles }}
+                selectStyle={styles.selectStyle}
                 value={this.props.play.toLowerCase()}
                 ref={(el) => {
                     //this.inputRefs.picker = el;
@@ -399,40 +476,67 @@ render() {
               />
             
           </CardSection>
+          <CardSection style={styles.container}>
+            <View style={[styles.groupContainer, {flexDirection:'column'}]}>
+
+            <View style={styles.sliderContainer}>
+            <View style={styles.sliderContainer}>
+                <Text
+                  style={styles.sliderLabel}
+                >{`Interval: ${this.state.interval}`}</Text>
+                <Slider
+                  style={styles.slider}
+                  minimumValue={2}
+                  maximumValue={10}
+                  value={parseInt(this.state.interval)}
+                  onSlidingComplete={this.setSpeechInterval}
+                  onValueChange={this.setSpeechIntervalChange}
+                />
+              </View>
+              </View>
+
+              <View style={styles.sliderContainer}>
+              <View style={styles.sliderContainer}>
+                <Text
+                  style={styles.sliderLabel}
+                >{`Speed: ${this.state.speechRate.toFixed(2)}`}</Text>
+                <Slider
+                  style={styles.slider}
+                  minimumValue={0.01}
+                  maximumValue={0.99}
+                  value={this.state.speechRate}
+                  onSlidingComplete={this.setSpeechRate}
+                  onValueChange={this.setSpeechRateChange}
+                />
+              </View>
+              </View>
+
+              <View style={styles.sliderContainer}>
+                <View style={styles.sliderContainer}>
+                  <Text
+                    style={styles.sliderLabel}
+                  >{`Pitch: ${this.state.speechPitch.toFixed(2)}`}</Text>
+                  <Slider
+                    style={styles.slider}
+                    minimumValue={0.5}
+                    maximumValue={2}
+                    value={this.state.speechPitch}
+                    onSlidingComplete={this.setSpeechPitch}
+                    onValueChange={this.setSpeechPitchChange}
+                  />
+                </View>
+              </View>
+            </View>
+
+          </CardSection>
         </Card>
 
-        <Text style={styles.label}>{`Status: ${this.state.ttsStatus ||
+        {/* <Text style={styles.label}>{`Status: ${this.state.ttsStatus ||
           ""}`}</Text>
 
         <Text style={styles.label}>{`Selected Voice: ${this.state
-          .selectedVoice || ""}`}</Text>
-
-        <View style={styles.sliderContainer}>
-          <Text
-            style={styles.sliderLabel}
-          >{`Speed: ${this.state.speechRate.toFixed(2)}`}</Text>
-          <Slider
-            style={styles.slider}
-            minimumValue={0.01}
-            maximumValue={0.99}
-            value={this.state.speechRate}
-            onSlidingComplete={this.setSpeechRate}
-          />
-        </View>
-
-        <View style={styles.sliderContainer}>
-          <Text
-            style={styles.sliderLabel}
-          >{`Pitch: ${this.state.speechPitch.toFixed(2)}`}</Text>
-          <Slider
-            style={styles.slider}
-            minimumValue={0.5}
-            maximumValue={2}
-            value={this.state.speechPitch}
-            onSlidingComplete={this.setSpeechPitch}
-          />
-        </View>
-
+          .voice || ""}`}</Text> */}
+        
 
       </View>
     );
@@ -458,8 +562,19 @@ const styles = StyleSheet.create({
     //justifyContent: "center",
     //alignItems: "center",
     //backgroundColor: "#F5FCFF"
+    borderWidth: 0,
+    borderTopWidth: 0,
     borderBottomWidth: 0,
-    backgroundColor: colors.green01,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    backgroundColor: colors.screenBGColor,
+  },
+  cardStyle: {
+    borderWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
   },
   title: {
     fontSize: 20,
@@ -470,16 +585,19 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   sliderContainer: {
+    flex:1,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: 'space-between',
     alignItems: "center"
   },
   sliderLabel: {
     textAlign: "center",
-    marginRight: 20
+    marginRight: 20,
+    marginLeft:10
   },
   slider: {
-    width: 150
+    width: 200,
+    marginRight:10
   },
   textLabel: {
     flex: 1,
@@ -495,29 +613,50 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40
     },
-  playPause: {
+  iconPlay: {
       borderRadius: 50,
       borderWidth: 2,
       borderColor: '#ffffff',
-      padding: 10,
-      marginHorizontal: 15
+      marginRight: 10,
+      //padding: 5,
+      //marginHorizontal: 15
+  },
+  groupContainer: {
+    flex:1, 
+    flexDirection:'row', 
+    justifyContent:'space-between', 
+    alignItems:'center', 
+    borderRadius:15, 
+    backgroundColor:'white',
+    //marginRight:0
+  },
+  selectStyle: {
+    borderRadius: 25, 
+    width:345, 
+    backgroundColor:'white', 
+    borderColor:'transparent'
+  },
+  groupLabelStyle: {
+    fontSize: 18,
+    marginLeft:10,
+    fontFamily:'GillSans-SemiBold'
   }
 });
 
 const pickerSelectStyles = StyleSheet.create({
     pickerTextStyle: {
         fontSize: 13,
-        paddingLeft: 20
+        paddingLeft: 20,
     },
     inputIOS: {
         fontSize: 16,
         paddingTop: 13,
         paddingHorizontal: 10,
         paddingBottom: 12,
-        borderWidth: 1,
+        borderWidth: 0,
         borderColor: 'gray',
         borderRadius: 4,
-        backgroundColor: colors.green01,
+        backgroundColor: colors.screenBGColor,
         color: 'black',
         width: 250
     },
@@ -529,7 +668,7 @@ const pickerSelectStyles = StyleSheet.create({
         borderWidth: 0,
         borderColor: 'gray',
         borderRadius: 4,
-        backgroundColor: colors.green01,
+        backgroundColor: colors.screenBGColor,
         color: 'black',
         width: 250
     },

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import { Router, Scene, Actions, Drawer } from 'react-native-router-flux';
+import {Image, View, Text, StyleSheet, TouchableOpacity, TouchableHighlight} from 'react-native';
+import { Router, Scene, Actions, Drawer, Tabs } from 'react-native-router-flux';
 import HomeTest from './screens/HomeTest';
 import HomeForm from './screens/HomeForm';
 import LoginForm from './components/login/LoginForm';
@@ -19,7 +19,7 @@ import ClassNoteEdit from './components/MyClass/ClassNoteEdit';
 
 
 import SideMenu from './components/SideMenu';
-import SortClass from './components/SortClass';
+import SortClass from './components/MyClass/SortClass';
 import MyWord from './components/MyWord';
 
 import MyPhraseEdit from './components/MyPhrase/MyPhraseEdit';
@@ -36,9 +36,10 @@ import MyPlanList from './components/MyPlan/MyPlanList';
 import MyLanguageList from './components/MyLanguage/MyLanguageList';
 
 import MyBookmarkList from './components/MyBookmark/MyBookmarkList';
-import ClassRecorder from './components/ClassRecorder';
+import ClassRecorder from './components/MyClassRecord/ClassRecorder';
 import LabSettings from './components/Settings/LabSettings';
 
+import colors from './styles/colors'
 
 const RouterComponent = () => {
     return (
@@ -56,23 +57,36 @@ const RouterComponent = () => {
                     <Drawer
                         initial
                         key="main"
-                        drawer
+                        //drawer
                         contentComponent={SideMenu}
                         drawerPosition='left'
+                        drawerWidth={200}
                         hideNavBar
+                        //navigationBarStyle = {{backgroundColor: '#405CE5'}}
                         >
 
-                        <Scene key="classModal" modal direction="vertical" drawerIcon={() => <Image style={{width:40, height:40}} source={require('./img/hamburger.png')}></Image>}
-                            hideNavBar>
+                        <Scene key="classModal" //modal direction="vertical" 
+                            drawerIcon={() => <Image style={{width:16, height:16}} source={require('./img/hamburger.png')}></Image>}
+                            hideNavBar
+                            >
                             
-                            <Scene key="classTabBar" tabs>
+                            <Tabs key="classTabBar" //tabs
+                                //hideTabBar
+                                //swipeEnabled
+                                tabBarStyle={{backgroundColor: colors.tabBGColor, height:50}} 
+                                showLabel={false}
+
+                                //inactiveBackgroundColor = {{backgroudColor: 'white'}}
+                                //tabtyle = {{backgroudColor: '#405CE5'}}
+                            >
                                 <Scene 
                                     initial                    
                                     key="classList" 
                                     component={ClassList} 
                                     title="Class List"
-                                    icon={() => <Image style={styles.tabBar} source={require('./img/Class.png')}></Image>} 
-
+                                    navigationBarStyle = {{backgroundColor: '#405CE5'}}
+                                    titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                                    icon={() => <Image style={styles.tabBar} source={require('./img/classTab.png')}></Image>} 
                                     renderRightButton={
                                         <TouchableOpacity onPress={ () => Actions.ClassSort() }>
                                             <Image style={styles.buttonRight} source={require('./img/button_filter.png')}></Image>
@@ -82,13 +96,18 @@ const RouterComponent = () => {
 
                                 {/* <Scene icon={() => <Image style={styles.tabBar} source={require('./img/Calendar.png')}></Image>} key="mySchedule" component={MyWord} title="Schedule" hideNavBar/> 
                                 <Scene icon={() => <Image style={styles.tabBar} source={require('./img/Bulletin.png')}></Image>} key="myBulletin" component={MyWord} title="Bulletin" hideNavBar/>  */}
-                                <Scene icon={() => <Image style={styles.tabBar} source={require('./img/bookmark.png')}></Image>} key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmarks' />
+                                <Scene
+                                    navigationBarStyle = {{backgroundColor: '#405CE5'}}
+                                    titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                                    icon={() => <Image style={styles.tabBar} source={require('./img/bookmarkTab.png')}></Image>} 
+                                    key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmarks'
+                                />
 
-                            </Scene>
+                            </Tabs>
                         </Scene> 
                     </Drawer>
 
-                    <Scene key="classItem" title="Class" component={ClassPlayer}
+                    <Scene key="classItem" title="Class List" component={ClassPlayer}
                         renderRightButton={
                             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}>
                                 <TouchableOpacity onPress={ () => Actions.MediaList() }>
@@ -115,6 +134,8 @@ const RouterComponent = () => {
 
                 <Scene key="ClassSort" modal direction="vertical" 
                         component={SortClass}
+                        title='Sorting / Filter'
+                        //titleStyle={{fontFamily: 'GillSans-SemiBold'}}
                         renderLeftButton={
                         <TouchableOpacity onPress={ () => Actions.pop() }>
                             <Image style={styles.buttonLeft} source={require('./img/hamburger.png')}></Image>
@@ -134,25 +155,46 @@ const RouterComponent = () => {
                 {/* <Scene key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmark List' /> */}
                 
 
-                <Scene key="modal" modal direction="vertical" 
+                <Scene key="modal" navigationBarStyle = {{backgroundColor: '#405CE5'}} //modal direction="vertical" 
                         renderLeftButton={
                             <TouchableOpacity onPress={ () => Actions.pop() }>
                                 <Image style={styles.buttonLeft} source={require('./img/hamburger.png')}></Image>
                             </TouchableOpacity>
                         }
                         renderRightButton={
-                            <TouchableOpacity onPress={ () => Actions.myPhraseEdit({phraseSource: 'manualWord'}) }>
-                                <Image style={styles.buttonRight} source={require('./img/plus.png')}></Image>
-                            </TouchableOpacity>
-                        } >
-                    <Scene key="tabBar" tabs>
-                        <Scene bookmark={false} icon={() => <Image style={styles.tabBar} source={require('./img/MyWord.png')}></Image>} key="myPhrase" component={PhraseList} title="My Phrase" hideNavBar onEnter={()=> {Actions.refresh({enterTime:new Date()})}} />
-                        <Scene bookmark={true} icon={() => <Image style={styles.tabBar} source={require('./img/MyBookmark.png')}></Image>} key="LabBookmark" component={PhraseList} title="Bookmark" hideNavBar onEnter={()=> {Actions.refresh({enterTime:new Date()})}} /> 
+                            <TouchableHighlight style={{borderRadius:20, borderWidth:2, width:20, borderColor:'white', marginRight:10, 
+                                                        flex:1, flexDirection:'row', justifyContent:'center', alignItem:'center'}}
+                                                        onPress={ () => Actions.myPhraseEdit({phraseSource: 'manualWord'}) }>
+                                <Text style={{alignItems:'center', color:'white', fontWeight:'bold'}}>+</Text>
+                               {/* <Image style={styles.buttonRight} source={require('./img/plus.png')}></Image> */}
+                            </TouchableHighlight> }
+                >
+
+                    <Tabs key="tabBar" tabBarStyle={{backgroundColor: colors.tabBGColor, height:50}} 
+                                showLabel={false} hideNavBar>
+
+                        <Scene navigationBarStyle = {{backgroundColor: colors.navBarHeader}} bookmark={false}
+                                titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                                icon={() => <Image style={styles.tabBar} source={require('./img/myPhrase.png')}></Image>}
+                                key="myPhrase" component={PhraseList} title="My Phrase"  
+                                onEnter={()=> {Actions.refresh({enterTime:new Date()})}} />
+
+                        <Scene navigationBarStyle = {{backgroundColor: colors.navBarHeader}} bookmark={true}
+                                titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                                icon={() => <Image style={styles.tabBar} source={require('./img/bookmarkTab.png')}></Image>}
+                                key="LabBookmark" component={PhraseList} title="Bookmark"
+                                onEnter={()=> {Actions.refresh({enterTime:new Date()})}} /> 
+
+                        <Scene navigationBarStyle = {{backgroundColor: colors.navBarHeader}}
+                                titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                                icon={() => <Image style={[styles.tabBar, {width:35}]} source={require('./img/MyDictionarySetting.png')}></Image>}
+                                key="MyDictionarySetting" component={LabSettings} title="Setting"  />
+
                         {/* <Scene icon={() => <Image style={styles.tabBar} source={require('./img/MyNotebook.png')}></Image>} key="MyNotebook" component={MyWord} title="Notebook" hideNavBar/>
                         <Scene icon={() => <Image style={styles.tabBar} source={require('./img/MySharing.png')}></Image>} key="MySharing" component={MyWord} title="Sharing" hideNavBar />
                         <Scene icon={() => <Image style={styles.tabBar} source={require('./img/MyAdvice.png')}></Image>} key="MyAdvice" component={MyWord} title="Advice" hideNavBar /> */}
-                        <Scene icon={() => <Image style={styles.tabBar} source={require('./img/MyDictionarySetting.png')}></Image>} key="MyDictionarySetting" component={LabSettings} title="Setting" hideNavBar />
-                    </Scene>
+
+                    </Tabs>
                 </Scene>
                 
             </Scene>
@@ -168,21 +210,27 @@ const TabIcon = ({ selected, title }) => {
 }
 
 const styles = StyleSheet.create({
-   
    buttonLeft: {
-    width: 40,
-    height: 40,
+    width: 16,
+    height: 16,
     marginLeft: 10,
   },
    buttonRight: {
-    width: 35,
-    height: 35,
+    width: 23.78,
+    height: 21.52,
     marginRight: 10,
   },
   tabBar: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 35,
     marginTop: 10,
+    //backgroundColor: colors.tabBGColor
   },
+  tabBarBlue: {
+    width: 25,
+    height: 26,
+    marginTop: 10,
+    backgroundColor: colors.tabBGColor
+  }
 });
 export default RouterComponent;

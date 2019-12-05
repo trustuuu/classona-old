@@ -41,24 +41,26 @@ class LabSettings extends Component{
     render(){
         //const {phrase, description, startSecs, media } = this.props;
         return (
-            <ScrollView>
-            <View style={[styles.container, {borderWidth: 0, flex: 1}]}>
-            <Card style={{borderWidth: 0, backgroundColor: colors.green01}}>
-                <CardSection style={styles.container}>        
-                    <TTSPlayerSetting />
-                </CardSection>
-                <CardSection style={styles.container}>  
-                    <TouchableOpacity style={styles.buttonContainer} onPress={this.onSave.bind(this)}>
-                        <Image style={styles.buttonLeft} source={require('../../img/save.png')}></Image>
+            <View style={{flex:1, flexDirection:'column', justifyContent:'space-between', alignItems:'stretch', backgroundColor: colors.screenBGColor}}>
+                <ScrollView style={{padding: 0}}>
+                    <View style={[styles.container, {borderWidth: 0, flex: 1}]}>
+                        <Card style={{borderWidth: 0, backgroundColor: colors.gray01}}>
+                            <CardSection style={styles.container}>        
+                                <TTSPlayerSetting />
+                            </CardSection>
+                        </Card>
+                    </View>
+                </ScrollView>
+                <View style={{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'flex-end'}}>
+                    <TouchableOpacity style={styles.buttonStyle} onPress={this.onSave.bind(this)}>
+                        <Text style={{textAlign: 'center', color:'white'}}>Save</Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.buttonContainer} onPress={ () => Actions.pop() }>
-                        <Image style={styles.buttonRight} source={require('../../img/cancel.png')}></Image>
+                    <TouchableOpacity style={[styles.buttonStyle, {marginLeft:5}]} onPress={()=> {Actions.pop()}}>
+                        <Text style={{textAlign: 'center', color:'white'}}>Cancel</Text>
                     </TouchableOpacity>
-                </CardSection>
-            </Card>
+                </View>
             </View>
-            </ScrollView>
+
         )
     }
 }
@@ -67,7 +69,16 @@ const styles = {
     container: {
     flex: 1,
     borderBottomWidth: 0,
-    backgroundColor: colors.green01,
+    backgroundColor: colors.screenBGColor,
+    padding: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    // paddingTop: 0,
+    // paddingBottom: 0,
+    // paddingLeft: 0,
+    // paddingRight: 0
     },
     buttonContainer: {
         flex:1,
@@ -88,7 +99,18 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
-    }
+    },
+    buttonStyle: {
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 5, 
+        backgroundColor: '#405CE5',
+        borderRadius: 25, 
+        height: 48, 
+        width: 150, 
+        //margin:5
+    },
 }
 
 const mapStateToProps = ({myDictionary}) => { //{ auth, myDictionary }) => {
