@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
 import { updatePosition } from '../actions'
 import { formatTime } from '../helpers/utils';
-
+import colors from '../styles/colors/'
 class ProgressBar extends ProgressComponent {
 
     componentWillUpdate()
@@ -29,13 +29,16 @@ class ProgressBar extends ProgressComponent {
 
         return (
             <View style={styles.view}>
-                <Text style={styles.info}>{info}</Text>
                 <TouchableWithoutFeedback>
                     <View style={styles.bar}>
                         <View style={[{width: progress + '%'}, styles.played]} />
                         <View style={[{width: buffered + '%'}, styles.buffered]} />
                     </View>
                 </TouchableWithoutFeedback>
+                <View style={{flex:1, flexDirection:'row', justifyContent:'space-between',}}>
+                    <Text style={styles.info}>{position}</Text>
+                    <Text style={styles.info}>{duration}</Text>
+                </View>
             </View>
         );
     }
@@ -45,31 +48,32 @@ class ProgressBar extends ProgressComponent {
 const styles = StyleSheet.create({
     view: {
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'stretch',
         flex: 1,
-        width: '100%'
+        width: '100%',
+        backgroundColor: 'white'
     },
     info: {
-        color: '#c0c0c0',
-        fontSize: 16,
+        color: '#434667',
+        fontSize: 12,
         fontWeight: '300',
         //margin: 10
     },
     bar: {
-        backgroundColor: '#575757',
-        height: 5,
+        backgroundColor: colors.progressBarBGColor, //'#575757',
+        height: 7,
         width: '100%',
         //margin: 10,
         flexDirection: 'row',
         alignItems: 'flex-start'
     },
     played: {
-        backgroundColor: '#03A9F4',
-        height: 5
+        backgroundColor: colors.homeBlue, //'#03A9F4',
+        height: 7
     },
     buffered: {
         backgroundColor: '#797979',
-        height: 5
+        height: 7
     }
 });
 

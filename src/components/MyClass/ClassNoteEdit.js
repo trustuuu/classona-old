@@ -50,20 +50,17 @@ class ClassNoteEdit extends Component {
         }
     }
 
-    renderHeader = () => {
-        return <Input placeholder="Type Here..." lightTheme round />;
-     };
-
-
     renderButton() {
         if (this.props.loading){
             return <Spinner size="large" />;
         }
-        if (global.userType == 'instructor')
+
+        //if (global.userType == 'instructor')
+        if ((global.userType == 'instructor') && (this.props.oNote.instructor.toLowerCase() == global.email))
         {
             return (
-                <TouchableOpacity  style={styles.buttonRight} onPress={this.onButtonPress.bind(this)}>
-                    <Image style={styles.buttonLeft} source={require('../../img/save.png')}></Image>
+                <TouchableOpacity style={styles.buttonStyle} onPress={this.onSave.bind(this)}>
+                    <Text style={{textAlign: 'center', color:'white'}}>Save</Text>
                 </TouchableOpacity>
             );
         }
@@ -81,7 +78,7 @@ class ClassNoteEdit extends Component {
         }
     }
 
-    onButtonPress(){
+    onSave(){
         //const {note, description} = this.state.note;
         if ( this.props.noteAction == 'addClassNote'){
             this.props.addClassNote(this.state.note);
@@ -99,9 +96,12 @@ class ClassNoteEdit extends Component {
             <View style={{flex: 1}}>
                 <Card>
                     {/* <Header/> */}
-                    <CardSection>
+                    <CardSection style={{backgroundColor:'transparent', borderBottomWidth:0}}>
+                        <Text style={{backgroundColor:'transparent', paddingLeft:10}}>Phrase</Text>
+                    </CardSection>
+                    <CardSection style={{borderRadius:25, borderWidthTop:0}}>
                         <TextInput
-                            style={{height:100}}
+                            style={{height:80, paddingLeft:10, paddingRight:10, color:'#AFB1C1'}}
                             editable = {true}
                             multiline = {true}
                             label="Note"
@@ -117,10 +117,13 @@ class ClassNoteEdit extends Component {
                             value={this.state.note.note}
                         />
                     </CardSection>
-                    <CardSection>
+                    <CardSection style={{backgroundColor:'transparent', marginTop:20, borderBottomWidth:0}}>
+                        <Text style={{backgroundColor:'transparent', paddingLeft:10}}>Explain</Text>
+                    </CardSection>
+                    <CardSection style={{borderRadius:25, borderTopWidth:0}}>
                         <TextInput
                             //secureTextEntry
-                            style={{height:100}}
+                            style={{height:100, paddingLeft:10, paddingRight:10, color:'#AFB1C1'}}
                             editable = {true}
                             multiline = {true}
                             label="Description"
@@ -135,14 +138,15 @@ class ClassNoteEdit extends Component {
                     </CardSection>
 
                     {this.renderError()}
-                    <CardSection style={styles.buttonContainer} >                    
-                        {this.renderButton()}
-                        <TouchableOpacity style={styles.buttonRight} onPress={ () => Actions.pop() }>
-                            <Image style={styles.buttonRight} source={require('../../img/cancel.png') }></Image>
-                        </TouchableOpacity>
-                    </CardSection>
+                    
                 </Card>
                     {this.showSpin()}
+                <View style={{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'flex-start', marginTop:10}}>
+                    {this.renderButton()}
+                    <TouchableOpacity style={[styles.buttonStyle, {marginLeft:5}]} onPress={()=> {Actions.pop()}}>
+                        <Text style={{textAlign: 'center', color:'white'}}>Cancel</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -176,6 +180,17 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    buttonStyle: {
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 5, 
+        backgroundColor: '#405CE5',
+        borderRadius: 25, 
+        height: 48, 
+        width: 150, 
+        //margin:5
     }
 }
 

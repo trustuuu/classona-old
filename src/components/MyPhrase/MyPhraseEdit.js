@@ -12,20 +12,28 @@ class MyPhraseEdit extends Component{
     constructor(props) {
         super(props);
         //const { phrase } = props.phrase;
-        this.state = { phrase: {phrase:'', description: ''}};
+        this.state = { phrase: {phrase:'', description: ''}, title:"Add To My Dictionary"};
     }
 
     componentDidMount()
     {
         if (this.props.phraseSource == 'manualWord')
         {
-            this.setState({phrase: {phrase:'', description:''}});
+            this.setState({phrase: {phrase:'', description:''}, title:'Add To My Dictionary'});
         }
+        else if (this.props.phraseSource == 'editToMyWord'){
+            this.setState({title:'Edit Phrase'});
+        }
+        else{
+            this.setState({title:'Add To My Dictionary'});
+        }
+
+        
     }
     static getDerivedStateFromProps(nextProps, prevState){
         
         if(nextProps.phrase !== prevState.phrase){
-            return { phrase: nextProps.phrase == null ? {phrase:'', description:''} : nextProps.phrase};
+            return { phrase: nextProps.phrase == null ? {phrase:'', description:''} :  nextProps.phraseSource == 'manualWord' ? {phrase:'', description:''} : nextProps.phrase};
         }
         // else if(nextProps.phrase.description !== prevState.phrase.description){
             
@@ -100,15 +108,15 @@ class MyPhraseEdit extends Component{
     render(){
         return (
             <View style={{flex: 1, backgroundColor:'#F6F7FB'}}>
-                <View style={{backgroundColor:'#405CE5', paddingTop: 30}}>
+                <View style={{backgroundColor:'#405CE5', paddingTop: 10}}>
                 <Header viewStyle={{backgroundColor:'#405CE5'}}
                         textStyle={{fontSize:14, fontFamily: 'GillSans-SemiBold', textTransform: 'uppercase', color: colors.white}}
-                        headerText="Add To Dictionary" />
+                        headerText={this.state.title} />
                 </View>
             <Card>
                 <CardSection style={{marginLeft:10, marginRight:10, borderRadius:25, borderBottomWidth:0}}>
                     <TextInput
-                        style={{height:150}}
+                        style={{height:100}}
                         editable = {true}
                         multiline = {true}
                         label="Phrase"
@@ -125,7 +133,7 @@ class MyPhraseEdit extends Component{
                 <CardSection style={{marginLeft:10, marginRight:10, marginTop:5, borderRadius:25, borderBottomWidth:0}}>
                     <TextInput
                         //secureTextEntry
-                        style={{height:150}}
+                        style={{height:140}}
                         editable = {true}
                         multiline = {true}
                         label="Description"
@@ -138,19 +146,19 @@ class MyPhraseEdit extends Component{
                 </CardSection>
 
                 {this.renderError()}
-                <CardSection style={{backgroundColor:'transparent', borderBottomWidth:0}}>                    
+                <CardSection style={{backgroundColor:'transparent', borderBottomWidth:0, marginTop:10}}>                    
                     {/* {this.renderButton()}
                     <TouchableOpacity style={styles.buttonContainer} onPress={ () => Actions.pop() }>
                         <Image style={styles.buttonRight} source={require('../../img/cancel.png')}></Image>
                     </TouchableOpacity> */}
-                <View style={{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'flex-end'}}>
-                    <TouchableOpacity style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
-                        <Text style={{textAlign: 'center', color:'white'}}>Save</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.buttonStyle, {marginLeft:5}]} onPress={()=> {Actions.pop()}}>
-                        <Text style={{textAlign: 'center', color:'white'}}>Cancel</Text>
-                    </TouchableOpacity>
-                </View>
+                    <View style={{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'flex-end'}}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={this.onButtonPress.bind(this)}>
+                            <Text style={{textAlign: 'center', color:'white'}}>Save</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.buttonStyle, {marginLeft:5}]} onPress={()=> {Actions.pop()}}>
+                            <Text style={{textAlign: 'center', color:'white'}}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
                 </CardSection>
             </Card>
             </View>

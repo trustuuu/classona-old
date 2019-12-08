@@ -3,7 +3,7 @@ import firebase from 'firebase';
 require("firebase/storage");
 import { UPDATE_LIBRARY, LIBRARY_STATUS, PLAYBACK_INIT, PLAYBACK_STATE, 
         PLAYBACK_TRACK, NAVIGATE_TO, UPDATE_POSITION, BLOCK_START_POSITION, BLOCK_END_POSITION,
-        TRACK_PLAY_LOADING } from './types';
+        TRACK_PLAY_LOADING, CLEAR_PLAY_TRACK } from './types';
 import { convertSecToDate } from '../helpers/utils';
 
 function libraryStatus(fetching, error) {
@@ -106,7 +106,7 @@ export function fetchLibrary(oItems) {
                 return {
                     id: item.media,                
                     url: item.mediaUrl, // Load media from the network                
-                    title: `${item.className} by ${item.instructor} in ${item.institution}(${item.seq}`,
+                    title: `${item.className} by ${item.instructorDisplayName} in ${item.institution}(${item.seq}`,
                     artist: item.instructor,
                     album: `${item.className}-${item.seq}`,
                     genre: item.institution,
@@ -144,6 +144,7 @@ export function initializePlayback() {//TODO
             maxCacheSize: 1024 * 5 // 5 mb
         });
         await TrackPlayer.updateOptions({
+            jumpInterval: 0,
             capabilities: [
                 TrackPlayer.CAPABILITY_PLAY,
                 TrackPlayer.CAPABILITY_PAUSE,
@@ -218,4 +219,11 @@ export function navigateTo(screenName) {
         type: NAVIGATE_TO,
         payload: screenName
     };
+}
+
+export function clearPlayTrack() {
+    return {
+        type: CLEAR_PLAY_TRACK,
+        payload: null
+    }
 }

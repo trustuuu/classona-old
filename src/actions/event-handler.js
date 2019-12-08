@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 
-import { playbackState, playbackTrack } from './TrackPlayActions';
+import { playbackState, playbackTrack, updatePlayback } from './TrackPlayActions';
 
 async function eventHandler(store, data) {
 
@@ -27,7 +27,7 @@ async function eventHandler(store, data) {
             TrackPlayer.seekTo(data.position);
             break;
         case 'remote-skip':
-            console.log('TrackPlayer.skip()');
+            //console.log('TrackPlayer.skip()');
         // You can make ducking smoother by adding a fade in/out
         case 'remote-duck':
             TrackPlayer.setVolume(data.ducking ? 0.5 : 1);
@@ -38,8 +38,13 @@ async function eventHandler(store, data) {
             store.dispatch(playbackState(data.state));
             break;
         case 'playback-track-changed':
-            store.dispatch(playbackTrack(data.nextTrack));
-            break;
+                console.log('eventHandler data', data);
+
+                //store.dispatch(playbackTrack(data.nextTrack));
+                store.dispatch(updatePlayback());
+                
+                
+                break;
         case 'playback-error':
             Alert.alert('An error ocurred', data.error);
             break;

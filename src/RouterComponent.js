@@ -84,7 +84,7 @@ const RouterComponent = () => {
                                     key="classList" 
                                     component={ClassList} 
                                     title="Class List"
-                                    navigationBarStyle = {{backgroundColor: '#405CE5'}}
+                                    navigationBarStyle = {{backgroundColor: colors.homeBlue}}
                                     titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
                                     icon={() => <Image style={styles.tabBar} source={require('./img/classTab.png')}></Image>} 
                                     renderRightButton={
@@ -97,7 +97,7 @@ const RouterComponent = () => {
                                 {/* <Scene icon={() => <Image style={styles.tabBar} source={require('./img/Calendar.png')}></Image>} key="mySchedule" component={MyWord} title="Schedule" hideNavBar/> 
                                 <Scene icon={() => <Image style={styles.tabBar} source={require('./img/Bulletin.png')}></Image>} key="myBulletin" component={MyWord} title="Bulletin" hideNavBar/>  */}
                                 <Scene
-                                    navigationBarStyle = {{backgroundColor: '#405CE5'}}
+                                    navigationBarStyle = {{backgroundColor: colors.homeBlue}}
                                     titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
                                     icon={() => <Image style={styles.tabBar} source={require('./img/bookmarkTab.png')}></Image>} 
                                     key="MyBookmark" direction="vertical" component={MyBookmarkList} title='Bookmarks'
@@ -107,29 +107,52 @@ const RouterComponent = () => {
                         </Scene> 
                     </Drawer>
 
-                    <Scene key="classItem" title="Class List" component={ClassPlayer}
-                        renderRightButton={
+                    <Scene key="classItem" title="Class" component={ClassPlayer}
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                            renderRightButton={
                             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}>
                                 <TouchableOpacity onPress={ () => Actions.MediaList() }>
                                     <Image style={styles.buttonRight} source={require('./img/tracks.png')}></Image>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={ () => Actions.ClassNoteList() }>
-                                    <Image style={styles.buttonRight} source={require('./img/Bulletin.png')}></Image>
+                                    <Image style={styles.buttonRight} source={require('./img/trackInfo.png')}></Image>
                                 </TouchableOpacity>
 
                             </View>
                         }
                     />
-                    <Scene key="ClassNoteList" title='Class Information' component={ClassNoteList}/>
-                    <Scene key="ClassNoteEdit" title='Class Note' component={ClassNoteEdit}/>
+                    <Scene key="ClassNoteList" title='Class Information' component={ClassNoteList}
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                            //leftButtonTextStyle={{color:colors.white}}
+                            //navBarButtonColor={{color:colors.white}}
+                    />
+                    <Scene key="ClassNoteEdit" title='Class Note' component={ClassNoteEdit}
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                    />
 
-                    <Scene key="myPlanHistory" component={MyPlanHistory} title='My Plan'/>
-                    <Scene key="myPlanList"  component={MyPlanList} title='New Plan' />
+                    <Scene key="myPlanHistory" component={MyPlanHistory} title='My Plan'
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                    />
+
+                    <Scene key="myPlanList"  component={MyPlanList} title='New Plan'
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                    />
                     
-                    <Scene key="myLanguageList"  component={MyLanguageList} title='My Language' />
+                    <Scene key="myLanguageList"  component={MyLanguageList} title='My Language'
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                    />
 
 
-                    <Scene key="ClassRecorder" title="Private Class" component={ClassRecorder}/>
+                    <Scene key="ClassRecorder" title="Private Class" component={ClassRecorder}
+                            navigationBarStyle = {{backgroundColor: colors.homeBlue}}
+                            titleStyle={{ color: colors.white, textTransform: 'uppercase'}}
+                    />
                 </Scene>
 
                 <Scene key="ClassSort" modal direction="vertical" 
@@ -162,8 +185,8 @@ const RouterComponent = () => {
                             </TouchableOpacity>
                         }
                         renderRightButton={
-                            <TouchableHighlight style={{borderRadius:20, borderWidth:2, width:20, borderColor:'white', marginRight:10, 
-                                                        flex:1, flexDirection:'row', justifyContent:'center', alignItem:'center'}}
+                            <TouchableHighlight style={{borderRadius:25, borderWidth:2, height:25, width:25, borderColor:'white', marginRight:10, 
+                                                        flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center'}}
                                                         onPress={ () => Actions.myPhraseEdit({phraseSource: 'manualWord'}) }>
                                 <Text style={{alignItems:'center', color:'white', fontWeight:'bold'}}>+</Text>
                                {/* <Image style={styles.buttonRight} source={require('./img/plus.png')}></Image> */}

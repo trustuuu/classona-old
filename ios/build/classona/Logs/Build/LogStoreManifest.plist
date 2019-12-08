@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>A3391D66-14D2-491B-9FB5-18590C2521E4</key>
+		<key>9D576AA6-020A-4803-9850-22298AF74726</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>A3391D66-14D2-491B-9FB5-18590C2521E4.xcactivitylog</string>
+			<string>9D576AA6-020A-4803-9850-22298AF74726.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -30,15 +30,15 @@
 			<key>signature</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>597206998.50983202</real>
+			<real>597490773.04008198</real>
 			<key>timeStoppedRecording</key>
-			<real>597207000.20545495</real>
+			<real>597490774.73556101</real>
 			<key>title</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>A3391D66-14D2-491B-9FB5-18590C2521E4</string>
+			<string>9D576AA6-020A-4803-9850-22298AF74726</string>
 		</dict>
-		<key>BFBB9ED8-1023-49F7-A3B7-9F1E2BF7AFEC</key>
+		<key>A7EA547B-BA49-47C4-AD44-71C3098C9636</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -47,7 +47,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>BFBB9ED8-1023-49F7-A3B7-9F1E2BF7AFEC.xcactivitylog</string>
+			<string>A7EA547B-BA49-47C4-AD44-71C3098C9636.xcactivitylog</string>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
@@ -62,13 +62,13 @@
 			<key>signature</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>597206814.45572901</real>
+			<real>597459961.94256306</real>
 			<key>timeStoppedRecording</key>
-			<real>597206815.82850802</real>
+			<real>597459969.08359694</real>
 			<key>title</key>
 			<string>Building workspace classona with scheme classona and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>BFBB9ED8-1023-49F7-A3B7-9F1E2BF7AFEC</string>
+			<string>A7EA547B-BA49-47C4-AD44-71C3098C9636</string>
 		</dict>
 	</dict>
 </dict>

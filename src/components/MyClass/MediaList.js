@@ -44,16 +44,22 @@ class MediaList extends Component {
 
         const newTracks = this.state.tracks.map((track, index) => {
                 return(
-                    <View key={index}>
-                    
-                    <TouchableOpacity style={styles.TouchableText} 
-                    onPress={() => this.onPress(track.id)}
+                    //<View key={index}>
+                    <CardSection style={[{ backgroundColor : (track.id == this.state.currentTrackId) ? colors.selectYellow : colors.white, 
+                                        borderRadius:25, 
+                                        paddingLeft: 15,
+                                        marginTop: 5}]}
                     >
-                        <Text style={[styles.titleStyle, { backgroundColor : (track.id == this.state.currentTrackId) ? "yellow" : "white"}]} >
-                            {track.title}
-                        </Text>
-                    </TouchableOpacity>
-                    </View>  
+                    
+                        <TouchableOpacity style={styles.TouchableText} 
+                        onPress={() => this.onPress(track.id)}
+                        >
+                            <Text>
+                                {track.title}
+                            </Text>
+                        </TouchableOpacity>
+                    </CardSection>
+                    //</View>  
                 ); 
             });
         
@@ -69,21 +75,25 @@ class MediaList extends Component {
     render()
     {
         return(
-            
-            <ScrollView contentContainerStyle={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
-                <Header headerText='Class media list' style={{backgroundColor:colors.green01, fontWeight: "bold"}}/>
-                <Card>
-                    {this.trackHeader()}
-                </Card>
-                <Card>
-                    {this.trackList()}
-                </Card>
-                <Card>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={ () => Actions.pop() }>
-                        <Image style={styles.buttonRight} source={require('../../img/save.png')}></Image>
+            <View style={{flex:1, flexDirection:'column', backgroundColor:colors.screenBGColor, justifyContent:'space-between', alignItems:'stretch'}}>
+                <View style={{flex:8}}>
+                <Header headerText='Class media list' textStyle={{color:colors.white, fontFamily:'GillSans-Light'}}
+                            viewStyle={{backgroundColor:colors.homeBlue, height:80}}/>
+                <ScrollView> 
+                        <Card>
+                            <CardSection style={{borderRadius:25, marginTop:20, marginBottom:20, backgroundColor:colors.playBGColor}}>
+                                {this.trackHeader()}
+                            </CardSection>
+                            {this.trackList()}
+                        </Card>
+                </ScrollView>
+                </View>
+                <View style={{flex:1, alignItems:'center'}}>
+                    <TouchableOpacity style={styles.buttonStyle} onPress={ () => Actions.pop() }>
+                        <Text style={{color:colors.white}}>CLOSE</Text>
                     </TouchableOpacity>
-                </Card>
-            </ScrollView>
+                </View>
+            </View>
         )
     }
 }
@@ -92,34 +102,32 @@ class MediaList extends Component {
 const styles = {
     TouchableText: {
         //backgroundColor: '#DDDDDD',
-        padding: 2
+        padding: 2,
+        alignItems:'stretch'
+        //borderRadius:15
     },
     titleStyle: {
       fontSize: 15,
       //fontWeight: "bold",
-      //color: colors.green01,
-      paddingLeft: 15
+      color: colors.white,
+      paddingLeft: 15,
+      alignItems:'stretch'
     },
     descStyle: {
         fontSize: 10,
         paddingLeft: 20
       },
-    buttonContainer: {
-        flex:1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        paddingBottom: 100
-    },
-    buttonLeft: {
-        width: 50,
-        height: 50,
-        marginLeft: 120,
-    },
-    buttonRight: {
-        width: 50,
-        height: 50,
-    },
+      buttonStyle: {
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 5, 
+        backgroundColor: '#405CE5',
+        borderRadius: 25, 
+        height: 48, 
+        width: 250, 
+        //margin:5
+    }
   };
 
 // const MapStateToProps = ({player}) =>

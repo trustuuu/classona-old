@@ -8,7 +8,7 @@ import { Text, Button, View, ScrollView, Dimensions,
         TouchableHighlight } from 'react-native';
 import {CardSection, Card, Spinner } from '../common';
 //import CardSectionKey from './common/CardSectionKey';
-import { fetchLibrary, initializePlayback, setBlockStart, setBlockEnd } from '../../actions';
+import { fetchLibrary, initializePlayback, setBlockStart, setBlockEnd, clearPlayTrack } from '../../actions';
 import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
 import Scripts  from './Scripts';
 import ScriptsEdit from './ScriptsEdit';
@@ -42,6 +42,8 @@ class ClassPlayer extends Component {
                 currentPosition: this.props.startSecs ? this.props.startSecs : 0,
                 startSecs: this.props.startSecs,
                 tracks: null,
+                track:null,
+                currentTrackId: null
             };
 
         this.scrolling = this.scrolling.bind(this);
@@ -49,7 +51,6 @@ class ClassPlayer extends Component {
 
     async componentDidMount()
     {
-        //ref:https://teamtreehouse.com/library/foreach-index-and-array-parameters
         await TrackPlayer.reset();
         await this.props.fetchLibrary(this.props.oClass.items);
         await this.props.initializePlayback();
@@ -59,20 +60,26 @@ class ClassPlayer extends Component {
     {
         //clearInterval(this._progressInterval);
         //clearInterval(this.activeInterval);
-        this.setState({tracks:null})
+        this.setState({tracks:null, currentTrackId:''})
         await TrackPlayer.reset();
         this.props.setBlockEnd(0);
         this.props.setBlockStart(0);
+        this.props.clearPlayTrack();
     }
 
 
     static getDerivedStateFromProps(nextProps, prevState){
+        
         if(nextProps.currentPosition !== prevState.currentPosition){
             return { currentPosition: nextProps.currentPosition };
         }
         else if (nextProps.tracks != prevState.tracks){
             return { tracks: nextProps.tracks}
         }
+        // else if (nextProps.currentTrackId != prevState.currentTrackId){
+        //     //console.log('call currentTrackId nextProps:', nextProps.currentTrackId, 'prevState:', prevState.currentTrackId);
+        //     return { currentTrackId: nextProps.currentTrackId}
+        // }
         else{
             return null;
         }
@@ -86,11 +93,21 @@ class ClassPlayer extends Component {
                 await TrackPlayer.seekTo(this.props.blockStart);
             } 
         }
+        
         if (prevProps.tracks != this.props.tracks){
-
             this.addTracks();
             this.setState({tracks:this.props.tracks})
         }
+        
+        //console.log('currentTrackId in componentDidUpdate before', 'preProps:', prevProps.currentTrackId, 'prevState:', prevState.currentTrackId, 'this.props:', this.props.currentTrackId);
+        // if ((prevProps.currentTrackId != this.props.currentTrackId)){
+        //     //console.log('componentDidUpdate', prevProps.currentTrackId, prevState.currentTrackId, this.props.currentTrackId);
+        //     const currentTrackId = await TrackPlayer.getCurrentTrack();
+        //     //console.log('currentTrackId in componentDidUpdate', currentTrackId);
+        //     const track = currentTrackId !== null ? (this.props.tracks ? this.props.tracks.find((track) => track.id == currentTrackId) : null) : null;
+        //     this.setState({currentTrackId: TrackPlayer.getCurrentTrack(), track: track});
+        //     this.ticker.scrollTo({ y: 0, animated: false })
+        // }
 
       }
 
@@ -124,9 +141,8 @@ class ClassPlayer extends Component {
             if (queueTracks.length < 1){
 
                 let state = await TrackPlayer.getState();
-                // console.log('addTracks before  -> state', state);
-                // console.log('addTracks', queueTracks, this.props.tracks);
 
+                //console.log('tracked added in addTracks => ',this.props.tracks);
                 await TrackPlayer.add(this.props.tracks);
 
                 const queueTracks2 = await TrackPlayer.getQueue();
@@ -138,38 +154,38 @@ class ClassPlayer extends Component {
 
     async onStartPlay () {
         
-        const currentTrackId = await TrackPlayer.getCurrentTrack();
-        const currentTrack = await TrackPlayer.getTrack(currentTrackId);
-        console.log("track information", currentTrackId, currentTrack);
+        //const currentTrackId = await TrackPlayer.getCurrentTrack();
+        //const currentTrack = await TrackPlayer.getTrack(currentTrackId);
+        //console.log("track information", currentTrackId, currentTrack);
         if (this.props.media != undefined) {
-            TrackPlayer.skip(this.props.media);
+            await TrackPlayer.skip(this.props.media);
         }
         
         if (this.props.startSecs != undefined) {
-            
-            TrackPlayer.play();
+            console.log('play 1st');
+            await TrackPlayer.play();
             //if repeat block set
             if ((this.props.blockStart != undefined) && (this.props.blockStart > 0)){
 
-                TrackPlayer.seekTo(this.props.blockStart);
+                await TrackPlayer.seekTo(this.props.blockStart);
             }
             else if ((this.props.triggerSource !== undefined) && (this.props.triggerSource == 'bookmark') && (this.state.startSecs != null)){
 
-                TrackPlayer.seekTo(this.state.startSecs);
+                await TrackPlayer.seekTo(this.state.startSecs);
                 this.setState({startSecs:null});
             }
             
         }
         else {
             try{
-
-                TrackPlayer.play()
+                console.log('play 2nd');
+                await TrackPlayer.play()
 
             }catch(e){
                 console.log('error', e)
             }
             let state = await TrackPlayer.getState();
-            console.log('play-state', state);
+            console.log('play-state in OnStartPlay', state);
         }
     }
 
@@ -182,6 +198,7 @@ class ClassPlayer extends Component {
 
     async _playPause() {
         if((this.props.state == TrackPlayer.STATE_PAUSED) || (this.props.state == TrackPlayer.STATE_READY)|| (this.props.state == TrackPlayer.STATE_STOPPED)|| (this.props.state == '')|| (this.props.state == 1)){
+            console.log('this.props.state =>', this.props.state);
             await this.onStartPlay();
         } else {
             await TrackPlayer.pause();
@@ -234,41 +251,22 @@ class ClassPlayer extends Component {
     }
 
     render(){
-        const item =  this.props.track != null ? {...this.props.track.customData} : {...this.state.items[0]};
-        let title = ((this.props.track != null) && (this.props.tracks != null)) ? `${this.props.track.title}/${this.props.tracks.length})` : `${item.className} by ${item.instructor} in ${item.institution}`;
-        if (title.indexOf('privateInstitution') > -1) title = 'My Private Recording';
+        //console.log('this.state.track ->', this.state.track, this.props.tracks);
+
+        //const item =  this.sate.track != null ? {...this.sate.track.customData} : {...this.state.items[0]};
+        if (this.props.track == null) return (<View></View>);
+        if (this.props.track == undefined) return (<View></View>);
+
+        const item =  {...this.props.track.customData};
+
+        //console.log('this.state.track item ->', global.userType, global.email, item);
+        //let title = ((this.sate.track != null) && (this.props.tracks != null)) ? `${this.sate.track.title}/${this.props.tracks.length})` : `${item.className} by ${item.instructor} in ${item.institution}`;
+        let title = `${this.props.track.title}/${this.props.tracks.length})`;
+        if (title.indexOf('privateInstitution') > -1) title = title.replace('in privateInstitution', ' ').replace('privateClass', 'Personal'); // title = 'My Private Recording';
         const {className, instructor, institution} = item;
 
-        // if (this.props.trackLoaded)
-        // {
-        //         console.log('this.state.tracks', this.state.tracks);
-        //         TrackPlayer.getQueue().then((oTracks) => {
-        //             if (oTracks.length < 1)
-        //             {
-        //                 TrackPlayer.add(this.props.tracks)
-        //                 .then(() => {
-        //                     this.setState({tracks:this.props.tracks})
-        //                     console.log('this.state.tracks added', this.state.tracks);
-        //                 })
-        //                 .catch((error) => {
-        //                     console.log('error while adding tracks', error);
-        //                 });
-        //             }
-        //         });
-        // }    
-
-        //let artworkHeight = height / 2;
-        //if(artworkHeight > width) artworkHeight = width;
-        //const this.state.trackLoaded = this.props.tracks ? this.props.tracks.length > 0 : false;
-        //const { items } = this.props.oClass;
-        
-        //console.log("scripts", scripts, test, "test", sss.map(s => s.word).join(', '));
-        // if (this.props.loading){
-        //     return <Spinner size="large" />;
-        // }
-
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor:'white'}}>
                 <ScrollView
                     ref={(ref) => this.ticker = ref}
                     bounces={true}
@@ -276,17 +274,18 @@ class ClassPlayer extends Component {
                     <Card>
                     {
                         //(global.userType == 'student') ?
-                        ((global.userType == 'student') && (title != 'My Private Recording')) ?
-                        <Scripts key={item.media} item={item} currentTrackId={this.props.currentTrackId} currentPosition={this.props.currentPosition} blockStart={this.props.blockStart} blockEnd={this.props.blockEnd} />
-                        :
+                        //((global.userType == 'student') && (title != 'My Private Recording')) ?
+                        ((global.userType == 'teacher') && (global.email == item.instructor.toLowerCase())) || ((global.userType == 'student') && (title == 'My Private Recording')) ?
                         <ScriptsEdit key={item.media} item={item} currentTrackId={this.props.currentTrackId} currentPosition={this.props.currentPosition} blockStart={this.props.blockStart} blockEnd={this.props.blockEnd} />
+                        :
+                        <Scripts key={item.media} item={item} currentTrackId={this.props.currentTrackId} currentPosition={this.props.currentPosition} blockStart={this.props.blockStart} blockEnd={this.props.blockEnd} />
                     }
                     </Card>
                     {this.showSpin()}
                 </ScrollView>
                 
                 <View style={styles.floatingButtonView}>
-                    <TouchableHighlight style={[styles.floatingButton, {backgroundColor: colors.green01}]} onPress={this._startBlock.bind(this)} >
+                    <TouchableHighlight style={[styles.floatingButton, {backgroundColor: colors.homeBlue}]} onPress={this._startBlock.bind(this)} >
                         <Text>{(this.props.blockStart > 0) ? `[${Math.round(this.props.blockStart)}]` : '>'}</Text>
                     </TouchableHighlight>
                     <TouchableHighlight style={[styles.floatingButton, {backgroundColor: colors.yellow}]} onPress={this._endBlock.bind(this)} >
@@ -302,11 +301,11 @@ class ClassPlayer extends Component {
                     }
                 </View>
 
-                <View style={{marginBottom: 5}}>
+                <View style={{marginLeft:30, marginRight:30, marginTop: 10, marginBottom: 5, height:20}}>
                     <ProgressBar />
                 </View>
-                <View>
-                    <Text style={{backgroundColor:colors.green01}}>{ title }</Text>
+                <View style={{justifyContent:'center', alignItems:'center', backgroundColor:colors.playBGColor}}>
+                    <Text style={{backgroundColor:colors.playBGColor, color:'white'}}>{ title }</Text>
                 </View>
                 <View style={styles.controls}>
                     <ImageButton
@@ -363,7 +362,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'space-around',
         padding: 10,
-        backgroundColor: colors.green01,
+        backgroundColor: colors.playBGColor,
     },
     controlIcon: {
         width: 40,
@@ -384,7 +383,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        bottom: 160,
+        bottom: 200,
         right: 20,
         height: 50,
         width: 50,
@@ -409,14 +408,16 @@ const styles = {
 
 const MapStateToProps = ({player}) =>
 {
-    console.log('state in MapStateToProps of ClassPlayer', player);
+    //console.log('state in MapStateToProps of ClassPlayer', player);
 
-    const { tracks, currentTrackId, state, currentPosition, blockStart, blockEnd, loading } = player; 
-    const track = currentTrackId !== null ? (tracks ? tracks.find((track) => track.id == currentTrackId) : null) : null;
+    const { track, tracks, currentTrackId, state, currentPosition, blockStart, blockEnd, loading } = player; 
+    //const track = currentTrackId !== null ? (tracks ? tracks.find((track) => track.id == currentTrackId) : null) : null;
     const trackLoaded = tracks ? tracks.length > 0 : false;
-    
+    //const track = null;
+    console.log('player in MapStateToProps of ClassPlayer', tracks, currentTrackId, track, state, currentPosition, blockStart, blockEnd, loading );
+
     return {tracks, track, currentTrackId, state, currentPosition, trackLoaded, blockStart, blockEnd, loading};
 }
 
 
-export default connect(MapStateToProps, {fetchLibrary, initializePlayback, setBlockStart, setBlockEnd })(ClassPlayer);
+export default connect(MapStateToProps, {fetchLibrary, initializePlayback, setBlockStart, setBlockEnd, clearPlayTrack })(ClassPlayer);

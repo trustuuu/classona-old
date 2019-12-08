@@ -47,7 +47,7 @@ export const NAVIGATE_TO = 'NAVIGATE_TO';
 export const UPDATE_POSITION = 'UPDATE_POSITION';
 export const BLOCK_START_POSITION = 'BLOCK_START_POSITION';
 export const BLOCK_END_POSITION = 'BLOCK_END_POSITION';
-
+export const CLEAR_PLAY_TRACK = 'CLEAR_PLAY_TRACK';
 export const MOVE_MENU = 'MOVE_MENU';
 
 export const MY_WORD = 'MY_WORD';

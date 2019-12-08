@@ -1,6 +1,6 @@
 import { PLAYBACK_STATE, PLAYBACK_INIT, PLAYBACK_TRACK, NAVIGATE_TO, 
         LIBRARY_STATUS, UPDATE_LIBRARY, UPDATE_POSITION, BLOCK_START_POSITION,
-        BLOCK_END_POSITION, TRACK_PLAY_LOADING } from '../actions/types';
+        BLOCK_END_POSITION, TRACK_PLAY_LOADING, CLEAR_PLAY_TRACK } from '../actions/types';
 
 const INITIAL_STATE = { 
     fetching: '',
@@ -27,7 +27,9 @@ export default (state = INITIAL_STATE, action) => {
         case PLAYBACK_STATE:
             return {...state, state: action.payload }
         case PLAYBACK_TRACK:
-            return {...state, currentTrackId: action.payload }
+            const currentTrackId = action.payload;
+            const track = currentTrackId !== null ? (state.tracks ? state.tracks.find((t) => t.id == currentTrackId) : null) : null;
+            return {...state, currentTrackId: action.payload, track:track }
         case NAVIGATE_TO:
             return {...state, currentScreen: action.payload}
         case UPDATE_POSITION:
@@ -36,6 +38,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, blockStart: action.payload}
         case BLOCK_END_POSITION:
             return {...state, blockEnd: action.payload}
+        case CLEAR_PLAY_TRACK:
+            return {...state, currentTrackId:null, currentPosition:0, blockStart:0, blockEnd:0}
         default:
             return state;
     }

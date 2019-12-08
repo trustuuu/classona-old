@@ -38,11 +38,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		nBFpguzLD+owEK06pcvEs8OL1v0=
+		FAS7afRrquxJ/hVVJfHIJEvqw1A=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		Xbj59kLZf/X2WHHk0qaXm5umOLQ=
+		zQtBu6vCh7szZdpELbNuKKMi4/Q=
 		</data>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
 		<data>
@@ -195,7 +195,7 @@
 		</data>
 		<key>PlugIns/classonaTests.xctest.dSYM/Contents/Resources/DWARF/classonaTests</key>
 		<data>
-		JD92SfIjMhsZdLhPMTolXjiHzOE=
+		m7/AVMHtK7Gs52/xep7dOs7gRtQ=
 		</data>
 		<key>PlugIns/classonaTests.xctest/Info.plist</key>
 		<data>
@@ -207,7 +207,7 @@
 		</data>
 		<key>PlugIns/classonaTests.xctest/classonaTests</key>
 		<data>
-		rX56eaj4M1ojKp9uGh1CrvO6OYg=
+		qwfC4OJqvtE1f2tIPYTnpfXMCRM=
 		</data>
 		<key>PlugIns/classonaTests.xctest/libswiftRemoteMirror.dylib</key>
 		<data>
@@ -312,22 +312,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nBFpguzLD+owEK06pcvEs8OL1v0=
+			FAS7afRrquxJ/hVVJfHIJEvqw1A=
 			</data>
 			<key>hash2</key>
 			<data>
-			UIOmf2DZCuD7V0JwKNAH4vlLNM8vRoKlDAXTDRX6aeI=
+			NZV0l5pTvHVP0qOfXo0ePc/tk9NwCB6kHEU/aRbrz0I=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Xbj59kLZf/X2WHHk0qaXm5umOLQ=
+			zQtBu6vCh7szZdpELbNuKKMi4/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			WPT1W8lP6zc6K2svTkMPoosW6Xa3DFgQSVAPInXeGyk=
+			j05Jf+s9GcSZAfsoAPxlQIjC+BiZwMHA5OSZuxUdmz8=
 			</data>
 		</dict>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
@@ -710,11 +710,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JD92SfIjMhsZdLhPMTolXjiHzOE=
+			m7/AVMHtK7Gs52/xep7dOs7gRtQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			iNz8ODxOWAn7Xd0Vc25aOy6Ep8BDBFjJgdIbUB1+d9A=
+			3hlJ9BhrDLLuc4JJK8CpGuDJEJ9fb4eZLKZ7T+aCvP0=
 			</data>
 		</dict>
 		<key>PlugIns/classonaTests.xctest/Info.plist</key>
@@ -743,11 +743,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rX56eaj4M1ojKp9uGh1CrvO6OYg=
+			qwfC4OJqvtE1f2tIPYTnpfXMCRM=
 			</data>
 			<key>hash2</key>
 			<data>
-			5enebgG2ByyrkvBxTDo4sx/O/Sc4C8Dti/tOIe/rmew=
+			nqZJW8Ljm1PfxPFS91/yHrBSuVR41rJXXIMSVxjcDl8=
 			</data>
 		</dict>
 		<key>PlugIns/classonaTests.xctest/libswiftRemoteMirror.dylib</key>

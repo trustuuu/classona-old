@@ -123,7 +123,7 @@ class TTSPlayer extends Component<props> {
 render() {
     
     return (
-      <View style={styles.controls}>
+      <View style={[styles.controls, this.props.style]}>
                     <ImageButton
                         source={iconPrevious}
                         //onPress={}

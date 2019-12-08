@@ -18,23 +18,31 @@ class ClassNoteItem extends Component {
 
     onSelect()
     {
-        this.props.noteChangeAction(this.props.oNote) 
-        Actions.ClassNoteEdit({oNote:this.props.oNote})
+        //if ((global.userType == 'instructor') && (this.props.oNote.instructor.toLowerCase() == global.email))
+        {
+            this.props.noteChangeAction(this.props.oNote) 
+            Actions.ClassNoteEdit({oNote:this.props.oNote})
+        }
     }
     
     render(){
 
         const {noteId, note, description} = this.props.oNote;
 
-        let deleteButton = {
-            text: 'Delete',
-            backgroundColor: '#d63031',
-            underlayColor: '#dfe6e9',
-            onPress: () => {
-                this.props.removeClassNote(this.props.oNote); 
+        const deleteButton = {
+            component: (
+                <View style={styles.swipeOutView}>
+                  <Image style={styles.swipeOutImageSmall} source={require('../../img/trash-white.png')} />
+                  <Text style={styles.swipeOutTextSmall}>Delete</Text>
+                </View>
+              ),
+                text: 'Delete',
+                backgroundColor: '#d63031',
+                underlayColor: '#dfe6e9',
+                onPress: () => {
+                    this.props.removeClassNote(this.props.oNote); 
                 }
         }
-
         // let bookmarkButton = {
         //     text: 'Bookmark',
         //     backgroundColor: '#00cec9',
@@ -61,25 +69,56 @@ class ClassNoteItem extends Component {
 
         return (
             
-            <Card>
-                <Swipeout right={swipeBtns}
-                    autoClose={true}
-                    backgroundColor= 'transparent'>
-                    <TouchableHighlight underlayColor='#0984e3'>
-                        <View>
-                            <CardSection>
-                                <TouchableOpacity style={styles.titleStyle} title={note} onPress={ () => this.onSelect() }>
-                                    <Text style={styles.titleStyle}>{note} </Text>
-                                </TouchableOpacity>
-                            </CardSection>
+            // <Card>
+            //     <Swipeout right={swipeBtns}
+            //         autoClose={true}
+            //         backgroundColor= 'transparent'>
+            //         <TouchableHighlight underlayColor='#0984e3'>
+            //             <View>
+            //                 <CardSection>
+            //                     <TouchableOpacity style={styles.titleStyle} title={note} onPress={ () => this.onSelect() }>
+            //                         <Text style={styles.titleStyle}>{note} </Text>
+            //                     </TouchableOpacity>
+            //                 </CardSection>
                             
-                            <CardSection>
-                                <Text style={styles.descStyle}>{description} </Text>
-                            </CardSection>
-                        </View>
-                    </TouchableHighlight>
-                </Swipeout>
-            </Card>
+            //                 <CardSection>
+            //                     <Text style={styles.descStyle}>{description} </Text>
+            //                 </CardSection>
+            //             </View>
+            //         </TouchableHighlight>
+            //     </Swipeout>
+            // </Card>
+
+
+            <Swipeout right={swipeBtns}
+            autoClose={true}
+            backgroundColor='transparent'
+            >
+                <View>
+            <TouchableHighlight underlayColor='#0984e3'>
+                <TouchableOpacity title={note} onPress={ () => this.onSelect() }>
+                <Card style={{borderBottomWidth: 0, borderTopWidth: 0}}>
+                <CardSection 
+                    style={{flex:1,
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            backgroundColor: global.backgroundColor,
+                            paddingTop: 10,
+                            //height: 50, 
+                            borderRadius: 15, 
+                            borderBottomWidth: 0, 
+                            borderTopWidth: 0}}
+                    >
+                    <Text style={[styles.titleStyle]}>{note} </Text>
+                    <Text style={[styles.titleStyle, {fontFamily: 'GillSans-Light'}]}>{description} </Text>
+                </CardSection>
+                </Card>
+                </TouchableOpacity>
+            </TouchableHighlight>
+            </View>
+            </Swipeout>
+
+
         );
     }
 
@@ -87,15 +126,42 @@ class ClassNoteItem extends Component {
 
 const styles = {
     titleStyle: {
-      fontSize: 15,
-      fontWeight: "bold",
-      color: colors.green01,
-      paddingLeft: 5,
-      textAlign: 'left'
-    },
-    descStyle: {
-        fontSize: 10,
-        paddingLeft: 20
+        //fontWeight: "bold",
+        color: '#434667',
+        paddingLeft: 20,
+        textTransform: 'uppercase',
+        fontFamily: 'GillSans-SemiBold',
+        fontSize: 14
+      },
+      descStyle: {
+          fontSize: 12,
+          paddingLeft: 20
+        },
+      swipeOutView: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+      },
+      swipeOutImage: {
+          width: 20,
+          height: 26
+      },
+      swipeOutText: {
+          paddingTop: 5,
+          color: colors.white,
+          fontFamily: 'GillSans-Light',
+          fontSize: 14
+      },
+      swipeOutImageSmall: {
+          width: 14,
+          height: 20
+      },
+      swipeOutTextSmall: {
+          paddingTop: 2,
+          color: colors.white,
+          fontFamily: 'GillSans-Light',
+          fontSize: 14
       }
   };
 

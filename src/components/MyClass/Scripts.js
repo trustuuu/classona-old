@@ -22,9 +22,9 @@ class Scripts extends Component {
 
     onPress = (trackId, startSecs, position) => {
         console.log('trackId in ClassPlayer', trackId, startSecs, position)
-        TrackPlayer.skip(trackId);
-        TrackPlayer.play();
+        //TrackPlayer.skip(trackId);
         TrackPlayer.seekTo(startSecs);
+        TrackPlayer.play();
     }
 
     componentDidMount(){

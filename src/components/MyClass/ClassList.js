@@ -94,7 +94,7 @@ class ClassListComponent extends Component {
                         ListHeaderComponent={this.renderHeader}
                         data={this.state.classes}
                         renderItem={({item}) => {
-                            console.log('class => ', item);
+                            //console.log('class => ', item);
                             return (
                                 <ListItemSwipable
                                     oClass={item}  groupBy={this.props.groupBy}

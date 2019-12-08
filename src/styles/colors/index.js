@@ -21,10 +21,12 @@ export default {
   lightRed: '#ff6b6b',
   joustBlue: '#54a0ff',
 
+  selectYellow: '#FFF3D1',
   listHeaderColor: '#72C9FD',
   screenBGColor: '#F6F7FB',
   homeBlue: '#405CE5',
   navBarHeader: '#405CE5',
   playBGColor: '#3A7FEF',
+  progressBarBGColor: '#F1F9FF',
   tabBGColor:'#405CE5'
 };

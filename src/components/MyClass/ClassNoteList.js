@@ -27,8 +27,12 @@ class ClassNoteList extends Component {
         }
     }
     renderHeader = () => {
-        return <Input placeholder="Type Here..." lightTheme round />;
+        return <Input containerStyle={{marginLeft:10, marginRight:5, marginTop:5, marginBottom:5,
+                                        borderRadius: 25, height:50, backgroundColor:'#FFFFFF' }}
+                      inputStyle={{borderRadius: 25, paddingBottom:10, backgroundColor:'#FFFFFF' }}
+                        type='search' placeholder="Search Here..." lightTheme round />;
      };
+
 
     renderAddButton = () => {
         if (global.userType == 'instructor')
@@ -52,8 +56,10 @@ class ClassNoteList extends Component {
 
     render()
     {
+        console.log('class notes ->', this.props.notes);
         return (
             <View style={styles.wapper}>
+                <View>
                     <OptimizedFlatList
                         ListHeaderComponent={this.renderHeader}
                         data={this.props.notes}
@@ -69,6 +75,12 @@ class ClassNoteList extends Component {
 
                 {this.renderAddButton()}
                 {this.showSpin()}
+                </View>
+                <View style={{marginBottom:30, alignItems:'center'}}>
+                    <TouchableOpacity style={styles.buttonStyle} onPress={ () => Actions.pop() }>
+                        <Text style={{color:colors.white}}>CLOSE</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -84,6 +96,8 @@ const styles = StyleSheet.create({
     wapper: {
         flex: 1,
         flexDirection: 'column',
+        justifyContent:'space-between',
+        alignItems: 'stretch'
     },
 
     buttonContainer: {
@@ -98,9 +112,19 @@ const styles = StyleSheet.create({
         height: 50,
         marginRight: 10,
     },
-
+    buttonStyle: {
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 5, 
+        backgroundColor: '#405CE5',
+        borderRadius: 25, 
+        height: 48, 
+        width: 250, 
+        //margin:5
+    },
     floatingButton: {
-        backgroundColor: colors.green02,
+        backgroundColor: colors.homeBlue,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',

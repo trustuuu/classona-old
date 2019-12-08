@@ -32,6 +32,7 @@ class ScriptsEdit extends Component {
             scriptIndex: 0,
             modalContainerHeight: null,
             script: {word:''},
+            editorShow: false,
             sheet: <View></View>
             };
     }
@@ -68,21 +69,23 @@ class ScriptsEdit extends Component {
     closeModal = () => this.setState({ modalVisible: false });
 
 
-    onPress = (item, script, index) => {
+    onPress = (item, script, index, cmd) => {
         
         const trackId = item.media;
         const position = item.seq * index * 21;
 
         //this.setState({ modalVisible: true, script });
 
-        TrackPlayer.skip(trackId);
-        TrackPlayer.play();
+        //TrackPlayer.skip(trackId);
         TrackPlayer.seekTo(script.startSecs);
+        TrackPlayer.play();
+        //if(cmd != 'pause') TrackPlayer.play();
+        //if(cmd == 'pause') TrackPlayer.pause();
     }
 
     startEdit = (script, index) => {
         TrackPlayer.pause();
-        this.setState({'script': {...script}});
+        this.setState({'script': {...script}, editorShow: true});
     }
 
     onRemoveBoomark = (script) => {
@@ -107,12 +110,15 @@ class ScriptsEdit extends Component {
     showScript = (item, script, index) => {
         const {currentTrackId, currentPosition} = this.props;
 
+        //console.log('showScript item, script, index ->', currentPosition, item, script, index)
         if (item.media != currentTrackId){
             return null;
-        }else if (((script.startSecs - 6 ) <= currentPosition) && (currentPosition <= (script.endSecs + 6 ))) {
+        }else if (((script.startSecs - 14 ) <= currentPosition) && (currentPosition <= (script.endSecs + 14 ))) {
                 return (
                     <View key={`modal${index}`}
-                                style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch'}}>
+                            style={{flexDirection: 'column', 
+                            justifyContent: 'flex-start', 
+                            alignItems: 'stretch'}}>
 
                         <TouchableOpacity key={`bookmark${index}`} 
                             
@@ -175,12 +181,13 @@ class ScriptsEdit extends Component {
     }
 
     showEditor = (item, script, index) => {
+
         const {currentTrackId, currentPosition} = this.props;
         let result = '';
         if (item.media != currentTrackId){
             return null;
         }
-        else if((script.startSecs <= currentPosition ) && (currentPosition <= script.endSecs)) {
+        else if((script.startSecs <= currentPosition ) && (currentPosition <= script.endSecs)) { // && this.state.editorShow) {
                     return (
                             <View key={`modal${index}`}
                                         style={{flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'stretch'}}>
@@ -254,7 +261,7 @@ class ScriptsEdit extends Component {
 
     onButtonPress(){
 
-        this.setState({'modalContainerHeight': null});
+        this.setState({'modalContainerHeight': null, editorShow: false});
         this.props.updateScript(this.props.item, this.state.script)
     }
 
@@ -289,16 +296,24 @@ class ScriptsEdit extends Component {
                         transparent={false}
                         visible={this.state.modalVisible}
                         onRequestClose={this.closeModal}
+                        onShow={() => TrackPlayer.pause()}
                         >
+                            <View style={{backgroundColor:'#405CE5', paddingTop: 10}}>
+                                <Header viewStyle={{backgroundColor:'#405CE5', height:70}}
+                                        textStyle={{fontSize:14, fontFamily: 'GillSans-SemiBold', textTransform: 'uppercase', color: colors.white}}
+                                        headerText='Script Edit' />
+                            </View>
                             <View style={[styles.modalContainer, {maxHeight: this.state.modalContainerHeight, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch'}]}>
                             
-                                <Text style={[styles.description, {textAlign: 'center', height: 40, fontSize:18, backgroundColor:colors.yellow}]}>
+                                {/* <Text style={[styles.description, {textAlign: 'center', height: 40, fontSize:18, backgroundColor:colors.yellow}]}>
                                     Editor
-                                </Text>
+                                </Text> */}
                                 <Text style={[styles.description, {height:20, backgroundColor:colors.white}]}>
                                 </Text>
                                 {
-                                    copiedScripts.map((script, index) => this.showScript(item, script, index))
+                                    copiedScripts.map((script, index) => {
+                                        return this.showScript(item, script, index)
+                                    })
                                 } 
                             </View>
 
@@ -400,7 +415,23 @@ class ScriptsEdit extends Component {
                                                 :
                                                 menuCallback.push(() => this.props.addClassBookmark(`${item.media}_${script.startSecs}`, null, global.userType, global.class, item, script.startSecs, "script"));
                                                 
-                                                menuCallback.push(() => this.setState({ modalVisible: true, script }));
+                                                menuCallback.push(() => {
+                                                    const trackId = item.media;
+                                                    console.log('press Edit script trackId ->', script, trackId);
+
+                                                    this.onPress(item, script, index, 'pause');
+                                                    // TrackPlayer.skip(trackId);
+                                                    // TrackPlayer.play();
+                                                    // TrackPlayer.seekTo(script.startSecs)
+                                                    // .then(() => {
+                                                    //     console.log('press Edit script pause');
+                                                    //     TrackPlayer.pause();
+                                                    //     this.setState({ modalVisible: true, script })
+                                                    // }
+                                                    // );
+                                                    this.setState({ modalVisible: true, script });
+                                                    
+                                                });
 
                                                 menuCallback.push(() => { return null });
                                                 menuCallback[index]();
@@ -514,8 +545,8 @@ const styles = {
         borderColor: "#C0C0C0",
         //borderWidth: 2,
         //height: 200,
-        marginHorizontal: 10,
-        marginVertical: 50, //300
+        marginHorizontal: 5, //10,
+        marginVertical: 5, //300
         //maxHeight: 300
     },
     description: {

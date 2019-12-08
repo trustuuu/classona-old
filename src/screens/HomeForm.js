@@ -122,16 +122,15 @@ class HomeForm extends Component {
     if (this.props.tiles.length == 1) {
       global.class = this.props.tiles[0].path;
       global.userType = this.props.tiles[0].type;
-      global.backgroundColor =
-        global.userType == 'instructor' ? colors.green02 : 'white';
+      global.backgroundColor = global.userType == 'instructor' ? colors.green02 : 'white';
 
-      console.log('global.class => ', this.props.tiles, global.class);
+      //console.log('global.class => ', this.props.tiles, global.class);
       this.props.checkLoginUser();
       return;
     }
 
     oStudentTiles.forEach((item, index) => {
-      console.log('item =>', item, countryImages);
+      //console.log('item =>', item, countryImages);
       btnArrary.push(
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <TouchableOpacity

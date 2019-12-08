@@ -103,7 +103,7 @@ class MediaItem extends Component {
     }
 
     async onStartPlay () {
-            TrackPlayer.setupPlayer().then(  () => {
+            await TrackPlayer.setupPlayer().then( async () => {
             console.log("inside", this.state.items);
             this.state.items.forEach((item, index) => {
                 console.log("mediaUrl", item.mediaUrl);
@@ -120,13 +120,26 @@ class MediaItem extends Component {
                 }
                 //classTracks.push(track);
 
-                 TrackPlayer.add(track)
+                 await TrackPlayer.add(track)
                 .then(() => {
                     console.log('track added')
                 })
                 .catch((error) => {
                     console.log('error while adding tracks', error);
                 });
+
+                await TrackPlayer.updateOptions({
+                    jumpInterval: 0,
+                    capabilities: [
+                      TrackPlayer.CAPABILITY_PLAY,
+                      TrackPlayer.CAPABILITY_PAUSE,
+                      //TrackPlayer.CAPABILITY_SEEK_TO,
+                      TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
+                      TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
+                      TrackPlayer.CAPABILITY_PLAY_FROM_SEARCH,
+                      TrackPlayer.CAPABILITY_SKIP,
+                    ],
+                  });
                             
             })
                          

@@ -4,6 +4,7 @@ import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, L
         SIGNOUT_USER_FAIL, SIGNOUT_USER_SUCCESS, LOGIN_USER_CHECK_FAIL, GET_ALL_MY_TILES } from './types';
 import { Actions } from 'react-native-router-flux';
 import {accountPath, instructorPath} from '../helpers/utils';
+import global from '../helpers/global.js';
 
 export const emailChangeAction = (text) => {
     return {
@@ -34,7 +35,8 @@ export const checkLoginUser = () => {
     return (dispatch) => {
         firebase.auth().onAuthStateChanged( (user ) => {
             if (user) {
-                console.log('loginUser user => ', user);
+                global.email = user.email.toLowerCase();
+                console.log('checkLoginUser user => ', user, user.email.toLowerCase(), global.email);
                 loginUserSuccess(dispatch, user)
             }else{
                 console.log('loginUser failed');
@@ -48,8 +50,8 @@ export const getLoginTiles = () => {
     return (dispatch) => {
         firebase.auth().onAuthStateChanged( (user ) => {
             if (user) {
-                console.log('getLoginTiles', user);
-                
+                global.email = user.email;
+                console.log('getLoginTiles', user, global.email);
                 const db = firebase.firestore();
                 let tiles = [];
                 let language = {};
@@ -135,7 +137,10 @@ export const loginUser = ( {email, password} ) => {
         dispatch({type: LOGIN_USER});
         console.log('loginUser with', email, password);
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(user => {console.log('loginUser user => ', user); loginUserSuccess(dispatch, user)})
+        .then(user => {
+            //global.user = email.toLowerCase();
+            loginUserSuccess(dispatch, user)
+        })
         .catch((error) => {
             console.log(error);
             //firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -167,7 +172,8 @@ const loginUserFail = (dispatch) => {
 }
 
 const loginUserSuccess = (dispatch, user) => {
-    console.log('user', user);
+    //console.log('loginUserSuccess', user, user.email);
+    //global.user = user.email.toLowerCase();
     dispatch ({
         type: LOGIN_USER_SUCCESS,
         payload: user
