@@ -1,31 +1,30 @@
-import React, {Component} from 'react';
-import {Provider} from 'react-redux';
-import * as firebase from 'firebase';
-import 'firebase/firestore';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import * as firebase from "firebase";
+import "firebase/firestore";
 
-import RouterComponent from './RouterComponent';
-import store from './Store';
-import TrackPlayer from 'react-native-track-player';
-import {AppState} from 'react-native';
+import RouterComponent from "./RouterComponent";
+import store from "./Store";
+import TrackPlayer from "react-native-track-player";
+import { AppState } from "react-native";
 
-import {updatePlayback} from './actions';
+import { updatePlayback } from "./actions";
 
 class App extends Component {
-
   componentWillMount() {
     const config = {
-      apiKey: 'AIzaSyDoL-799FteCnz5m5cmnV10YmdA25UmwPM',
-      authDomain: 'simplylearning-a27c2.firebaseapp.com',
-      databaseURL: 'https://simplylearning-a27c2.firebaseio.com',
-      projectId: 'simplylearning-a27c2',
-      storageBucket: 'simplylearning-a27c2.appspot.com',
-      messagingSenderId: '541110045029',
+      apiKey: Process.eve.apiKey,
+      authDomain: Process.eve.authDomain,
+      databaseURL: Process.eve.databaseURL,
+      projectId: Process.eve.projectId,
+      storageBucket: Process.eve.storageBucket,
+      messagingSenderId: Process.eve.messagingSenderId,
     };
 
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
     }
-    
+
     // Initialize Cloud Firestore through Firebase
     var db = firebase.firestore();
 
@@ -34,11 +33,11 @@ class App extends Component {
       //timestampsInSnapshots: true,
     });
 
-    AppState.removeEventListener('change', this._handleStateChange);
+    AppState.removeEventListener("change", this._handleStateChange);
   }
 
   async componentDidMount() {
-    AppState.addEventListener('change', this._handleStateChange);
+    AppState.addEventListener("change", this._handleStateChange);
 
     // TODO remove temp code
     await TrackPlayer.setupPlayer({});
@@ -61,7 +60,7 @@ class App extends Component {
   }
 
   _handleStateChange(appState) {
-    if (appState == 'active') {
+    if (appState == "active") {
       // Updates the playback information when the app is back from background mode
       store.dispatch(updatePlayback());
     }
